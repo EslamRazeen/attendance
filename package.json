@@ -4,6 +4,9 @@
     "dev": "nodemon app.js",
     "prod": "NODE_ENV=production node server.js"
   },
+  "engines": {
+    "node": "20.10.0"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.0",
     "cors": "^2.8.5",
