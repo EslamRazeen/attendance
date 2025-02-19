@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const attendanceSchema = new mongoose.Schema(
   {
-    sessionDate: {
+    sessionID: {
       type: mongoose.Schema.ObjectId,
       ref: "Session",
     },

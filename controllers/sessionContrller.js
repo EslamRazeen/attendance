@@ -14,7 +14,7 @@ const createSession = asyncHandler(async (req, res, next) => {
   const session = new Session({
     course: req.body.course,
     lecturer: req.body.lecturer,
-    sessionDate: Date.now(),
+    sessionID: Date.now(),
     // QRCode: generateQRCode(sessionId)
   });
   await session.save();
@@ -32,7 +32,7 @@ const createSession = asyncHandler(async (req, res, next) => {
     students.map((student) =>
       Attendance.create({
         student: student._id,
-        sessionDate: session._id,
+        sessionID: session._id,
         attendanceStatus: "absent",
         scanDate: Date.now(),
       })
@@ -42,7 +42,7 @@ const createSession = asyncHandler(async (req, res, next) => {
   const qrCodeData = JSON.stringify({
     sessionId: session._id,
     courseId: req.body.courseId,
-    sessionDate: session.sessionDate,
+    sessionID: session.sessionID,
   });
   const qrCode = await QRCode.toDataURL(qrCodeData);
 
