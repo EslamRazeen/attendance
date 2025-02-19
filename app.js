@@ -38,8 +38,10 @@ app.all("*", (req, res, next) => {
 // when you pass 4 parameters, express uderstand this Global Error Handling Middleware
 app.use(globalError);
 
-const server = app.listen(4000, () => {
-  console.log("App running on port 4000");
+const PORT = process.env.PORT || 4000;
+
+const server = app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}`);
 });
 
 // 44. Handle Errors Outside Express (Unhandled Rejections)
