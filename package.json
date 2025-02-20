@@ -2,7 +2,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "prod": "NODE_ENV=production node server.js"
+    "prod": "NODE_ENV=production node app.js"
   },
   "engines": {
     "node": "20.10.0"
