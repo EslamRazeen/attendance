@@ -8,7 +8,7 @@ const authController = require("../controllers/authController");
 
 router.post(
   "/",
-  authController.protect,
+  // authController.protect,
   //   authController.allowedTo("staff", "lecturer"),
   // validatorOfCourse.createBrandVAlidator,
   attendanceController.createAttendance
