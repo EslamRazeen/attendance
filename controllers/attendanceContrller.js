@@ -19,7 +19,7 @@ const createAttendance = asyncHandler(async (req, res) => {
     courses: { $in: [sessionExists.course] },
     _id: student,
   });
-  console.log(studentExists);
+  // console.log(studentExists);
 
   if (!studentExists || studentExists.length === 0)
     return res.status(404).json({ message: "Student not found" });

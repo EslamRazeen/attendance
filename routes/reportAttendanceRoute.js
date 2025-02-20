@@ -6,7 +6,7 @@ const reportOFAttendancesController = require("../controllers/reportOFAttendance
 const authController = require("../controllers/authController");
 
 router
-  .route("/")
+  .route("/:courseID")
   .get(authController.protect, reportOFAttendancesController.attendanceReport);
 
 module.exports = router;

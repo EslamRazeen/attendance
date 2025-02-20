@@ -21,8 +21,16 @@ const createSession = asyncHandler(async (req, res, next) => {
 
   // fetch all students that erolled in this course
   const courseId = new mongoose.Types.ObjectId(req.body.course);
-  const students = await Student.find({ courses: { $in: [courseId] } }); //await Student.find({ courses: req.body.course });
+  const students = await Student.find({
+    courses: { $in: [new mongoose.Types.ObjectId(courseId)] }, // تأكد من تحويل courseId إلى ObjectId
+  });
+
+  console.log("Total students found:", students.length);
   console.log(students);
+
+  // const allStudents = await Student.find({}, { name: 1, courses: 1 });
+  // console.log(allStudents);
+
   if (!students) {
     return res
       .status(404)
@@ -33,6 +41,7 @@ const createSession = asyncHandler(async (req, res, next) => {
       Attendance.create({
         student: student._id,
         sessionID: session._id,
+        courseId: session.course,
         attendanceStatus: "absent",
         scanDate: Date.now(),
       })
