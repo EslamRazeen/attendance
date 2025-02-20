@@ -33,13 +33,19 @@ const userSchema = new mongoose.Schema(
       type: String,
       // default: "Computer Science",
     },
-    studentDepartment: {
-      type: String,
-      enum: ["CS", "IS", "AI", "BIO"],
-    },
-    studentLevel: {
-      type: String,
-    },
+    lecturerCourses: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Course",
+      },
+    ],
+    // studentDepartment: {
+    //   type: String,
+    //   enum: ["CS", "IS", "AI", "BIO"],
+    // },
+    // studentLevel: {
+    //   type: String,
+    // },
   },
   { timestamps: true }
 );
@@ -47,6 +53,11 @@ const userSchema = new mongoose.Schema(
 userSchema.pre("save", async function (next) {
   // Hashin password in case of create
   this.password = await bcrypt.hash(this.password, 12);
+  next();
+});
+
+userSchema.pre("save", function (next) {
+  this.lecturerCourses = [...new Set(this.lecturerCourses.map(String))];
   next();
 });
 

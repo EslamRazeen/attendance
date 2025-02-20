@@ -4,8 +4,6 @@ const bcrypt = require("bcryptjs");
 const ApiError = require("../utils/apiError");
 const userSchema = require("../models/usersSchema");
 const factory = require("./handlerFactory");
-// const User = require("../models/usersSchema");
-const Student = require("../models/studentInfoSchema");
 
 const createUser = factory.createDocument(userSchema);
 
@@ -14,6 +12,42 @@ const getAllUsers = factory.getAllDocuments(userSchema);
 const getOneUser = factory.getOneDocument(userSchema);
 
 const deleteUser = factory.deleteDocument(userSchema);
+
+const addCourseToLecturer = asyncHandler(async (req, res, next) => {
+  const { userId, courseId } = req.body;
+  const user = await userSchema.findByIdAndUpdate(
+    userId,
+    {
+      // $addToSet => add product to wishlist array only once
+      $addToSet: { lecturerCourses: courseId },
+    },
+    { new: true }
+  );
+
+  res.status(200).json({
+    status: "Success",
+    message: "Product added successfully to wishlist",
+    data: user.lecturerCourses,
+  });
+});
+
+const removeCourseFromLecturer = asyncHandler(async (req, res, next) => {
+  const { userId } = req.body;
+  const user = await userSchema.findByIdAndUpdate(
+    userId,
+    {
+      // $pull => remove product from wishlist array if exists
+      $pull: { lecturerCourses: req.params.courseId },
+    },
+    { new: true }
+  );
+
+  res.status(200).json({
+    status: "Success",
+    message: "Product removed successfully from wishlist",
+    data: user.lecturerCourses,
+  });
+});
 
 const updateUser = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
@@ -62,22 +96,6 @@ const getLoggedUser = asyncHandler(async (req, res, next) => {
   next();
 });
 
-// const updateLoggedUser = asyncHandler(async (req, res, next) => {
-//   const user = await userSchema.findByIdAndUpdate(
-//     req.user._id,
-//     {
-
-//     },
-//     { new: true }
-//   );
-
-//   if (!user) {
-//     return next(new ApiError(`There is no user for this id: ${id}`, 404));
-//   }
-
-//   res.status(200).json({ message: "User updated successfully", data: user });
-// });
-
 const updateLoggedUserPassword = asyncHandler(async (req, res, next) => {
   const user = await userSchema.findByIdAndUpdate(req.user._id, {
     password: await bcrypt.hash(req.body.newPassword, 12),
@@ -105,6 +123,8 @@ module.exports = {
   updatUserPassword,
   getLoggedUser,
   updateLoggedUserPassword,
+  addCourseToLecturer,
+  removeCourseFromLecturer,
   //   updateLoggedUser,
   //   deactivateLoggedUser,
 };
