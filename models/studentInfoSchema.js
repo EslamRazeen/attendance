@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const studentSchema = new mongoose.Schema(
   {
@@ -43,5 +44,16 @@ const studentSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+studentSchema.pre("save", async function (next) {
+  // Hashin password in case of create
+  this.password = await bcrypt.hash(this.password, 12);
+  next();
+});
+
+studentSchema.pre("save", function (next) {
+  this.courses = [...new Set(this.courses.map(String))];
+  next();
+});
 
 module.exports = mongoose.model("Student", studentSchema);
