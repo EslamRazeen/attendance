@@ -1,10 +1,9 @@
 const asyncHandler = require("express-async-handler");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
 const factory = require("./handlerFactory");
 const Attendance = require("../models/attendancesSchema");
 const Session = require("../models/sessionsSchema");
-const User = require("../models/usersSchema");
 const Student = require("../models/studentInfoSchema");
 
 const createAttendance = asyncHandler(async (req, res) => {
@@ -13,13 +12,10 @@ const createAttendance = asyncHandler(async (req, res) => {
   if (!sessionExists)
     return res.status(404).json({ message: "Session not found" });
 
-  // const studentExists = await Student.findById(student);
-  // const studentID = new mongoose.Types.ObjectId(student);
   const studentExists = await Student.find({
     courses: { $in: [sessionExists.course] },
     _id: student,
   });
-  // console.log(studentExists);
 
   if (!studentExists || studentExists.length === 0)
     return res.status(404).json({ message: "Student not found" });

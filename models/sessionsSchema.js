@@ -6,13 +6,6 @@ const sessionSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    // sessionStatus: {
-    //   type: String,
-    //   enum: ["open", "closed"],
-    // },
-    Qrcode: {
-      type: String,
-    },
     lecturer: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
@@ -23,10 +16,18 @@ const sessionSchema = new mongoose.Schema(
       ref: "Course",
       required: true,
     },
-    duration: {
+    QRcodeChangeSpeed: {
       type: Number,
       default: 5,
     },
+    QRcodeTimeWorking: {
+      type: Number,
+      default: 20,
+    },
+    // sessionStatus: {
+    //   type: String,
+    //   enum: ["open", "closed"],
+    // },
   },
   { timestamps: true }
 );

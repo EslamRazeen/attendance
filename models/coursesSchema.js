@@ -35,14 +35,6 @@ const courseSchema = new mongoose.Schema(
       enum: ["1", "2", "3", "4"],
       required: true,
     },
-    QRcodeChangeSpeed: {
-      type: String,
-      default: "5 Sec",
-    },
-    QRcodeTimeWorking: {
-      type: String,
-      default: "5 Min",
-    },
   },
   { timestamps: true }
 );

@@ -15,7 +15,8 @@ const createSession = asyncHandler(async (req, res, next) => {
     course: req.body.course,
     lecturer: req.body.lecturer,
     sessionDate: Date.now(),
-    // QRCode: generateQRCode(sessionId)
+    QRcodeChangeSpeed: req.body.changeSpeed,
+    QRcodeTimeWorking: req.body.timeWorking,
   });
   await session.save();
 
@@ -25,8 +26,8 @@ const createSession = asyncHandler(async (req, res, next) => {
     courses: { $in: [new mongoose.Types.ObjectId(courseId)] }, // تأكد من تحويل courseId إلى ObjectId
   });
 
-  console.log("Total students found:", students.length);
-  console.log(students);
+  // console.log("Total students found:", students.length);
+  // console.log(students);
 
   // const allStudents = await Student.find({}, { name: 1, courses: 1 });
   // console.log(allStudents);
@@ -52,6 +53,7 @@ const createSession = asyncHandler(async (req, res, next) => {
     sessionId: session._id,
     courseId: req.body.course,
     sessionDate: session.sessionDate,
+    expiresAt: new Date(Date.now() + session.QRcodeChangeSpeed * 1000),
   });
   const qrCode = await QRCode.toDataURL(qrCodeData);
 
@@ -59,7 +61,7 @@ const createSession = asyncHandler(async (req, res, next) => {
   const qrCodeEntry = new QRCodeModel({
     sessionId: session._id,
     qrCodeData: qrCode,
-    expiresAt: new Date(Date.now() + 5 * 1000), // finish after 5 second
+    expiresAt: new Date(Date.now() + session.QRcodeChangeSpeed * 1000),
   });
   await qrCodeEntry.save();
 
