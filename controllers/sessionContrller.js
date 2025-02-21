@@ -50,7 +50,7 @@ const createSession = asyncHandler(async (req, res, next) => {
 
   const qrCodeData = JSON.stringify({
     sessionId: session._id,
-    courseId: req.body.courseId,
+    courseId: req.body.course,
     sessionDate: session.sessionDate,
   });
   const qrCode = await QRCode.toDataURL(qrCodeData);
