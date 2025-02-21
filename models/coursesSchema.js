@@ -12,20 +12,20 @@ const courseSchema = new mongoose.Schema(
       required: [true, "Course code is required"],
       unique: [true, "Course code is unique"],
     },
-    lecturer: {
-      type: mongoose.Schema.ObjectId,
-      ref: "User",
-      required: true,
-    },
+    // lecturer: {
+    //   type: mongoose.Schema.ObjectId,
+    //   ref: "User",
+    //   required: true,
+    // },
     department: {
       type: [String],
       enum: ["CS", "IS", "BIO", "AI"],
       required: true,
     },
-    schedul: {
-      type: [String],
-      required: true,
-    },
+    // schedul: {
+    //   type: [String],
+    //   required: true,
+    // },
     semester: {
       type: [String],
       enum: ["1", "2", "3", "4", "5", "6", "7", "8"],

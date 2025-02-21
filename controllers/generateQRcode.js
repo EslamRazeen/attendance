@@ -14,7 +14,7 @@ const updateQRCode = asyncHandler(async (req, res) => {
 
   // Check if session is finish
   const sessionEndTime =
-    new Date(session.sessionID).getTime() + session.duration * 60000; //60000 means 1 min
+    new Date(session.sessionDate).getTime() + session.duration * 60000; //60000 means 1 min
   if (Date.now() > sessionEndTime) {
     return res
       .status(400)
@@ -25,7 +25,7 @@ const updateQRCode = asyncHandler(async (req, res) => {
   const qrCodeData = JSON.stringify({
     sessionId: session._id,
     courseId: session.course,
-    sessionID: Date.now(),
+    sessionDate: Date.now(),
   });
   const qrCodeImage = await QRCode.toDataURL(qrCodeData);
 
