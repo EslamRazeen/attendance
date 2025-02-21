@@ -43,11 +43,11 @@ const excelParser = asyncHandler(async (req, res, next) => {
       email: row.email,
       password: await bcrypt.hash(String(row.password), 12),
       studentID: row.ID,
-      role: row.role || "student",
+      // role: row.role || "student",
       department: row.department,
       level: row.level,
       semester: row.semester,
-      courses: row.courses ? row.courses.split(",") : [],
+      // courses: row.courses ? row.courses.split(",") : [],
     }))
   );
   req.body.users = users_Students;

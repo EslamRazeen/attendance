@@ -11,8 +11,12 @@ const attendanceReport = asyncHandler(async (req, res, next) => {
 
   const userCourses = await User.findById(req.user._id);
 
+  const lecturerCourseIds = userCourses.lecturerCourses.map((course) =>
+    course._id.toString()
+  );
   if (
-    !userCourses.lecturerCourses.includes(new mongoose.Types.ObjectId(courseID))
+    !lecturerCourseIds.includes(courseID.toString())
+    // !userCourses.lecturerCourses.includes(new mongoose.Types.ObjectId(courseID))
   ) {
     return res.status(404).json("Course not found");
   }

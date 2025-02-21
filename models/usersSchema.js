@@ -61,4 +61,9 @@ userSchema.pre("save", function (next) {
   next();
 });
 
+userSchema.pre(/^find/, function (next) {
+  this.populate("lecturerCourses", "courseName");
+  next();
+});
+
 module.exports = mongoose.model("User", userSchema);

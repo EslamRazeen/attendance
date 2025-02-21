@@ -5,7 +5,7 @@ const courseSchema = new mongoose.Schema(
     courseName: {
       type: String,
       required: [true, "Course name is required"],
-      unique: [true, "Course name is unique"],
+      // unique: [true, "Course name is unique"],
     },
     courseCode: {
       type: String,
@@ -18,8 +18,9 @@ const courseSchema = new mongoose.Schema(
     //   required: true,
     // },
     department: {
-      type: [String],
-      enum: ["CS", "IS", "BIO", "AI"],
+      type: String,
+      // type: [String],
+      // enum: ["CS", "IS", "BIO", "AI"],
       required: true,
     },
     // schedul: {
@@ -27,12 +28,15 @@ const courseSchema = new mongoose.Schema(
     //   required: true,
     // },
     semester: {
-      type: [String],
-      enum: ["1", "2", "3", "4", "5", "6", "7", "8"],
+      type: String,
+      // type: [String],
+      // enum: ["1", "2", "3", "4", "5", "6", "7", "8"],
+      required: true,
     },
     level: {
-      type: [String],
-      enum: ["1", "2", "3", "4"],
+      type: String,
+      // type: [String],
+      // enum: ["1", "2", "3", "4"],
       required: true,
     },
   },

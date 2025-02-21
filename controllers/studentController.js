@@ -1,6 +1,8 @@
-const StudentInfoSchema = require("../models/studentInfoSchema");
-const factory = require("./handlerFactory");
 const asyncHandler = require("express-async-handler");
+
+const factory = require("./handlerFactory");
+const StudentInfoSchema = require("../models/studentInfoSchema");
+const Course = require("../models/coursesSchema");
 
 const ApiError = require("../utils/apiError");
 
@@ -26,6 +28,18 @@ const createUser_student = asyncHandler(async (req, res, next) => {
     return next(
       new ApiError("All users in the Excel sheet already exist.", 400)
     );
+  }
+
+  for (const student of newUsers) {
+    const matchedCourses = await Course.find({
+      department: student.department,
+      level: student.level,
+      semester: student.semester,
+    });
+    student.courses = matchedCourses.map((course) => course._id);
+    // console.log(matchedCourses);
+    // console.log(student.course);
+    // console.log(student);
   }
 
   // insert users that not in db before

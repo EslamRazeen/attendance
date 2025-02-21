@@ -56,4 +56,9 @@ studentSchema.pre("save", function (next) {
   next();
 });
 
+studentSchema.pre(/^find/, function (next) {
+  this.populate("courses", "courseName");
+  next();
+});
+
 module.exports = mongoose.model("Student", studentSchema);

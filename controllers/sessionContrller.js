@@ -13,7 +13,7 @@ const createSession = asyncHandler(async (req, res, next) => {
   // create new session
   const session = new Session({
     course: req.body.course,
-    lecturer: req.body.lecturer,
+    lecturer: req.user._id,
     sessionDate: Date.now(),
     QRcodeChangeSpeed: req.body.changeSpeed,
     QRcodeTimeWorking: req.body.timeWorking,
@@ -21,13 +21,10 @@ const createSession = asyncHandler(async (req, res, next) => {
   await session.save();
 
   // fetch all students that erolled in this course
-  const courseId = new mongoose.Types.ObjectId(req.body.course);
+  const courseId = req.body.course;
   const students = await Student.find({
-    courses: { $in: [new mongoose.Types.ObjectId(courseId)] }, // تأكد من تحويل courseId إلى ObjectId
+    courses: { $in: courseId },
   });
-
-  // console.log("Total students found:", students.length);
-  // console.log(students);
 
   // const allStudents = await Student.find({}, { name: 1, courses: 1 });
   // console.log(allStudents);
@@ -68,6 +65,8 @@ const createSession = asyncHandler(async (req, res, next) => {
   res.status(201).json({
     message: "Session created successfully",
     sessionId: session._id,
+    changeSpeed: session.QRcodeChangeSpeed,
+    timeWorking: session.QRcodeTimeWorking,
     qrCode,
   });
 });
