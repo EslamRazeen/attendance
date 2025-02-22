@@ -1,0 +1,1451 @@
+{
+	"info": {
+		"_postman_id": "7a4b2547-fe0f-4e94-b0aa-b49d15b094e7",
+		"name": "Attendance",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34630755"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Bassem\",\r\n    \"email\": \"bassem@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"lecturerRole\": \"instructour\",\r\n    \"lecturerDepartment\": \"CS\",\r\n    \"lecturerCourses\": [\"67b8f80a50147de33624ea46\", \"67b8f87450147de33624ea4d\", \"67b8f93350147de33624ea57\"]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/users/67b900c3c0dfe21b8c053d32",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"users",
+								"67b900c3c0dfe21b8c053d32"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get logged user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/users/getMe",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"users",
+								"getMe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\":\"staff\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/users/67b4deb9c2f31385064b7f9a",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"users",
+								"67b4deb9c2f31385064b7f9a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update logged user password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentPassword\":\"pass1\",\r\n    \"newPassword\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/users/updateMyPassword",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"users",
+								"updateMyPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/users/67b4ea698d6cc0ea1489b3b9",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"users",
+								"67b4ea698d6cc0ea1489b3b9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add user course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"67b70c9d9d14510649f68fa5\",\r\n    \"courseId\": \"67b71b75f35eef8c23696651\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/users/addCourses",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"users",
+								"addCourses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove user course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"67b70c9d9d14510649f68fa5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/users/deleteCourses/67b366be8665c29ac1321618",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"users",
+								"deleteCourses",
+								"67b366be8665c29ac1321618"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentPassword\":\"pass1\",\r\n    \"newPassword\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/users/67b33634b99935207ed21aca/updatePassword",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"users",
+								"67b33634b99935207ed21aca",
+								"updatePassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "Get all students",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo?page=1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"studentInfo"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/67b8ff29b4dd631faf251370",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"studentInfo",
+								"67b8ff29b4dd631faf251370"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create student manual",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"student5\",\r\n    \"email\": \"student5@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"department\": \"AI\",\r\n    \"courses\": [\"67b367db8665c29ac1321626\"]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"studentInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user_student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/الدنيا/Computer Science/1testOfProjectGraduation/Book1.xlsx"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/excel",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"studentInfo",
+								"excel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"AbdElrahman Ali arafa\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/67b4f383f994799a667c849d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"studentInfo",
+								"67b4f383f994799a667c849d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/67b74b1ffc4ef191e5a2b009",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"studentInfo",
+								"67b74b1ffc4ef191e5a2b009"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "signup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"JWT\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"user3\",\r\n    \"email\": \"user3@gamil.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"JWT\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"bassem@gmail.com\",\r\n    \"password\": \"pass11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/attendanceQRCode/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login studnet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"JWT\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"nabi@ee.com\",\r\n    \"password\": \"2282\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/attendanceQRCode/auth/student/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"auth",
+								"student",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "Create course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courseName\": \"High Performance Computing\",\r\n    \"courseCode\": \"48002032\",\r\n    \"department\": \"AI\",\r\n    \"semester\": \"8\",\r\n    \"level\": \"4\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/courses",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all coursess",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/courses",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get course",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/courses/67b8f80a50147de33624ea46",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"courses",
+								"67b8f80a50147de33624ea46"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"schedul\": [\"thursday-1pm\", \"sunday-9am\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/courses/67b366be8665c29ac1321618",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"courses",
+								"67b366be8665c29ac1321618"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/courses/67b367bc8665c29ac1321620",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"courses",
+								"67b367bc8665c29ac1321620"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sessions",
+			"item": [
+				{
+					"name": "Create session",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"course\": \"67b8f87450147de33624ea4d\",\r\n    \"changeSpeed\": 7,\r\n    \"timeWorking\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/sessions",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all sessions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/sessions",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get session",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/sessions/67b905704d4927b72c4a5ca9",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"sessions",
+								"67b905704d4927b72c4a5ca9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get QRcode",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/sessions/67b8dbcfcd3b1ce69334c63f/qrcode",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"sessions",
+								"67b8dbcfcd3b1ce69334c63f",
+								"qrcode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update session",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sessionStatus\": \"close\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/sessions/67b369758665c29ac132162a",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"sessions",
+								"67b369758665c29ac132162a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete session",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/sessions/67b369758665c29ac132162a",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"sessions",
+								"67b369758665c29ac132162a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Attendances",
+			"item": [
+				{
+					"name": "Get all attendances",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2IzMzIyMTg1NzVjOThlMjFjZjMxN2MiLCJpYXQiOjE3NDAwMDc1OTAsImV4cCI6MTc1NzI4NzU5MH0.AI943N8wHzvLCUgZAiqT_W6YbcmwGWBe46C8s4FW5Tk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/attendances",
+							"protocol": "https",
+							"host": [
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"attendances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create student attendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"student\": \"67b72db5a512fb2b7cfdad35\",\r\n    \"sessionID\": \"67b7288bef8c9cacf7106082\",\r\n    \"attendanceStatus\": \"present\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/attendances",
+							"protocol": "https",
+							"host": [
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"attendances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get student attendance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/attendances/67b906ed0faf2c2a9458c70b",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"attendances",
+								"67b906ed0faf2c2a9458c70b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update student attendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"attendanceStatus\": \"present\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/attendances/67b5e642157c383c5863066d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"attendances",
+								"67b5e642157c383c5863066d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete student attendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/attendances/67b5f2d0aff8e7c0a86cbad4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"attendances",
+								"67b5f2d0aff8e7c0a86cbad4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ReoportAttendance",
+			"item": [
+				{
+					"name": "Get report attendances",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2IzMzIyMTg1NzVjOThlMjFjZjMxN2MiLCJpYXQiOjE3NDAwMDc1OTAsImV4cCI6MTc1NzI4NzU5MH0.AI943N8wHzvLCUgZAiqT_W6YbcmwGWBe46C8s4FW5Tk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/report/67b8f87450147de33624ea4d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"report",
+								"67b8f87450147de33624ea4d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
