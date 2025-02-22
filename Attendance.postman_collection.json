@@ -1444,6 +1444,55 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get student report attendances",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2IzMzIyMTg1NzVjOThlMjFjZjMxN2MiLCJpYXQiOjE3NDAwMDc1OTAsImV4cCI6MTc1NzI4NzU5MH0.AI943N8wHzvLCUgZAiqT_W6YbcmwGWBe46C8s4FW5Tk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/report/67b8f87450147de33624ea4d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"report",
+								"67b8f87450147de33624ea4d"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

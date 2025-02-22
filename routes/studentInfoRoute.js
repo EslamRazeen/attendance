@@ -5,10 +5,19 @@ const router = express.Router();
 
 const studentController = require("../controllers/studentController");
 const authController = require("../controllers/authController");
+const authStudentController = require("../controllers/authControllerStudent");
+const validatorOfUser = require("../utils/validators/userValidator");
 
 const excelParser = require("../middlewares/excelParser");
 const upload = multer({ storage: multer.memoryStorage() });
 // const validatorOfCourse = require("../utils/validators/");
+
+router.put(
+  "/updateMyPassword",
+  authStudentController.protect,
+  validatorOfUser.updateLoggedStudentPassword,
+  studentController.updateLoggedStudentPassword
+);
 
 router.post(
   "/excel",

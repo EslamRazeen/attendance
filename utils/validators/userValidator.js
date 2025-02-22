@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 
 const validator = require("../../middlewares/validatorMiddleware");
 const userSchema = require("../../models/usersSchema");
+const studentSchema = require("../../models/studentInfoSchema");
 
 const getUserValidator = [
   // 1) rules
@@ -166,6 +167,34 @@ const updateLoggedUserPassword = [
   validator,
 ];
 
+const updateLoggedStudentPassword = [
+  check("currentPassword")
+    .notEmpty()
+    .withMessage("Current Password is required")
+    .custom(async (val, { req }) => {
+      console.log(req.student);
+      const user = await studentSchema.findById(req.student._id);
+      const isCorrectPass = await bcrypt.compare(val, user.password);
+      if (!isCorrectPass) {
+        throw new Error("Current Password Incorrect");
+      }
+      return true;
+    }),
+  check("newPassword")
+    .notEmpty()
+    .withMessage("New Password is required")
+    .custom((val, { req }) => {
+      if (val !== req.body.passwordConfirm) {
+        throw new Error("Password Confirm Incorrect");
+      }
+      return true;
+    }),
+  check("passwordConfirm")
+    .notEmpty()
+    .withMessage("Password Confirm is required"),
+  validator,
+];
+
 module.exports = {
   getUserValidator,
   createUserVAlidator,
@@ -173,5 +202,6 @@ module.exports = {
   deleteUserValidator,
   updatePassword,
   updateLoggedUserPassword,
+  updateLoggedStudentPassword,
   // updateLoggedUserValidator,
 };

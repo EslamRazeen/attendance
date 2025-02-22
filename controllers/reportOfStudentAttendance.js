@@ -1,25 +1,25 @@
 const asyncHandler = require("express-async-handler");
 
 const Attendance = require("../models/attendancesSchema");
-const User = require("../models/usersSchema");
+const Student = require("../models/studentInfoSchema");
 
 const attendanceReport = asyncHandler(async (req, res, next) => {
   const { courseID } = req.params;
 
-  const userCourses = await User.findById(req.user._id);
+  const student = await Student.findById(req.student._id);
 
-  const lecturerCourseIds = userCourses.lecturerCourses.map((course) =>
+  const studentCourseIds = student.courses.map((course) =>
     course._id.toString()
   );
   if (
-    !lecturerCourseIds.includes(courseID.toString())
+    !studentCourseIds.includes(courseID.toString())
     // !userCourses.lecturerCourses.includes(new mongoose.Types.ObjectId(courseID))
   ) {
     return res.status(404).json("Course not found");
   }
 
   const attendances = await Attendance.find(
-    { courseId: courseID },
+    { courseId: courseID, student: req.student._id },
     { student: 1, attendanceStatus: 1, courseId: 1 }
   )
     .populate("student", "name") //  -_id

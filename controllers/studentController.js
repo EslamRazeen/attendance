@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler");
+const bcrypt = require("bcryptjs");
 
 const factory = require("./handlerFactory");
 const StudentInfoSchema = require("../models/studentInfoSchema");
@@ -63,6 +64,16 @@ const updateStudent = factory.updateDocument(StudentInfoSchema);
 
 const deleteStudent = factory.deleteDocument(StudentInfoSchema);
 
+const updateLoggedStudentPassword = asyncHandler(async (req, res, next) => {
+  const user = await StudentInfoSchema.findByIdAndUpdate(req.student._id, {
+    password: await bcrypt.hash(req.body.newPassword, 12),
+    passwordChangedAt: Date.now(),
+  });
+  res
+    .status(200)
+    .json({ message: "User password updated successfully", data: user });
+});
+
 module.exports = {
   createStudent,
   getAllStudents,
@@ -70,4 +81,5 @@ module.exports = {
   updateStudent,
   deleteStudent,
   createUser_student,
+  updateLoggedStudentPassword,
 };

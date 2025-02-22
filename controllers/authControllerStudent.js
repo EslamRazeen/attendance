@@ -87,7 +87,7 @@ const protect = asyncHandler(async (req, res, next) => {
     }
   }
 
-  req.user = currentUser;
+  req.student = currentUser;
   next();
 });
 
