@@ -5,12 +5,13 @@ const router = express.Router();
 const attendanceController = require("../controllers/attendanceContrller");
 const authController = require("../controllers/authController");
 const authStudentController = require("../controllers/authControllerStudent");
+const userAndStuentProtect = require("../middlewares/accessUserAndStuentToCreateAttendance");
 // const validatorOfCourse = require("../utils/validators/");
 
 router.post(
   "/",
-  authStudentController.protect,
-  //   authController.allowedTo("staff", "lecturer"),
+
+  userAndStuentProtect.userAndStuentProtect,
   // validatorOfCourse.createBrandVAlidator,
   attendanceController.createAttendance
 );
