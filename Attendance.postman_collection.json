@@ -26,7 +26,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Bassem\",\r\n    \"email\": \"bassem@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"lecturerRole\": \"instructour\",\r\n    \"lecturerDepartment\": \"CS\",\r\n    \"lecturerCourses\": [\"67b8f80a50147de33624ea46\", \"67b8f87450147de33624ea4d\", \"67b8f93350147de33624ea57\"]\r\n\r\n}",
+							"raw": "{\r\n    \"name\": \"islam\",\r\n    \"email\": \"islam@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"lecturerRole\": \"instructour\",\r\n    \"lecturerDepartment\": \"CS\",\r\n    \"lecturerCourses\": [\"67b8f80a50147de33624ea46\", \"67b8f87450147de33624ea4d\", \"67b8f93350147de33624ea57\"]\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -192,7 +192,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"currentPassword\":\"pass1\",\r\n    \"newPassword\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\"\r\n    \r\n}",
+							"raw": "{\r\n    \"currentPassword\":\"2282\",\r\n    \"newPassword\": \"2282\",\r\n    \"passwordConfirm\": \"2282\"\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -588,6 +588,45 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update logged student password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentPassword\":\"2282\",\r\n    \"newPassword\": \"2282\",\r\n    \"passwordConfirm\": \"2282\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/updateMyPassword",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"studentInfo",
+								"updateMyPassword"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -655,7 +694,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"bassem@gmail.com\",\r\n    \"password\": \"pass11\"\r\n}",
+							"raw": "{\r\n    \"username\": \"islam@gmail.com\",\r\n    \"password\": \"pass11\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -698,7 +737,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"nabi@ee.com\",\r\n    \"password\": \"2282\"\r\n}",
+							"raw": "{\r\n    \"username\": \"ar@ee.com\",\r\n    \"password\": \"2282\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -949,7 +988,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"course\": \"67b8f87450147de33624ea4d\",\r\n    \"changeSpeed\": 7,\r\n    \"timeWorking\": 30\r\n}",
+							"raw": "{\r\n    \"course\": \"67b8f82b50147de33624ea49\",\r\n    \"changeSpeed\": 7,\r\n    \"timeWorking\": 30\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1113,7 +1152,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"sessionStatus\": \"close\"\r\n}",
+							"raw": "{\r\n    \"QRcodeTimeWorking\": 3000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1121,7 +1160,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/sessions/67b369758665c29ac132162a",
+							"raw": "{{URL}}/api/attendanceQRCode/sessions/67bc5458c4102c57d2ffc79c",
 							"host": [
 								"{{URL}}"
 							],
@@ -1129,7 +1168,7 @@
 								"api",
 								"attendanceQRCode",
 								"sessions",
-								"67b369758665c29ac132162a"
+								"67bc5458c4102c57d2ffc79c"
 							]
 						}
 					},
@@ -1247,7 +1286,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"student\": \"67b72db5a512fb2b7cfdad35\",\r\n    \"sessionID\": \"67b7288bef8c9cacf7106082\",\r\n    \"attendanceStatus\": \"present\"\r\n}",
+							"raw": "{\r\n    \"student\": \"67b8ff29b4dd631faf25136f\",\r\n    \"sessionID\": \"67bc5458c4102c57d2ffc79c\",\r\n    \"attendanceStatus\": \"present\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1480,15 +1519,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/report/67b8f87450147de33624ea4d",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/studentReport/67b8f82b50147de33624ea49",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
 								"attendanceQRCode",
-								"report",
-								"67b8f87450147de33624ea4d"
+								"studentReport",
+								"67b8f82b50147de33624ea49"
 							]
 						}
 					},

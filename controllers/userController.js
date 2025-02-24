@@ -55,12 +55,10 @@ const updateUser = asyncHandler(async (req, res, next) => {
     id,
     {
       name: req.body.name,
-      password: req.body.password,
       role: req.body.role,
       email: req.body.email,
-      courses: req.body.courses,
-      level: req.body.level,
-      semester: req.body.semester,
+      lecturerDepartment: req.body.lecturerDepartment,
+      lecturerRole: req.body.lecturerRole,
     },
     { new: true }
   );
