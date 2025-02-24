@@ -6,6 +6,7 @@ const StudentInfoSchema = require("../models/studentInfoSchema");
 const Course = require("../models/coursesSchema");
 
 const ApiError = require("../utils/apiError");
+const studentInfoSchema = require("../models/studentInfoSchema");
 
 const createUser_student = asyncHandler(async (req, res, next) => {
   if (!req.body.users || !req.body.users.length) {
@@ -54,7 +55,11 @@ const createUser_student = asyncHandler(async (req, res, next) => {
   });
 });
 
-const createStudent = factory.createDocument(StudentInfoSchema);
+const createStudent = asyncHandler(async (req, res) => {
+  const document = await studentInfoSchema.insertMany(req.body);
+  res.status(200).json({ data: document });
+});
+// factory.createDocument(StudentInfoSchema);
 
 const getAllStudents = factory.getAllDocuments(StudentInfoSchema);
 
