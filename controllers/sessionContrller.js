@@ -42,6 +42,8 @@ const createSession = asyncHandler(async (req, res, next) => {
         courseId: session.course,
         attendanceStatus: "absent",
         scanDate: Date.now(),
+        sessionType:
+          req.user.lecturerRole === "instructor" ? "lecture" : "section",
       })
     )
   );

@@ -23,6 +23,10 @@ const attendanceSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Course",
     },
+    sessionType: {
+      type: String,
+      enum: ["lecture", "section"],
+    },
   },
   { timestamps: true }
 );

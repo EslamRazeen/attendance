@@ -3,13 +3,35 @@ const bcrypt = require("bcryptjs");
 
 const ApiError = require("../utils/apiError");
 const userSchema = require("../models/usersSchema");
+const Attendance = require("../models/attendancesSchema");
 const factory = require("./handlerFactory");
 
 const createUser = factory.createDocument(userSchema);
 
 const getAllUsers = factory.getAllDocuments(userSchema);
 
-const getOneUser = factory.getOneDocument(userSchema);
+const getOneUser = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+  const user = await userSchema.findById(id);
+
+  if (!user) {
+    return next(new ApiError(`There is no user with this id`, 404));
+  }
+
+  const attendances = await Attendance.find({
+    courseId: { $in: user.lecturerCourses },
+  });
+
+  let absent = 0,
+    present = 0;
+  attendances.forEach((element) => {
+    if (element.attendanceStatus === "absent") absent++;
+    else present++;
+  });
+
+  res.status(200).json({ user, absent, present });
+});
+//factory.getOneDocument(userSchema);
 
 const deleteUser = factory.deleteDocument(userSchema);
 

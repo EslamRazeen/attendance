@@ -26,8 +26,8 @@ const userSchema = new mongoose.Schema(
     },
     lecturerRole: {
       type: String,
-      enum: ["instructour", "monitor"],
-      // default: "instructour",
+      enum: ["instructor", "assistant"],
+      // default: "instructor",
     },
     lecturerDepartment: {
       type: String,
