@@ -1,10 +1,11 @@
 const { check } = require("express-validator");
-// const slugify = require("slugify");
 const bcrypt = require("bcryptjs");
+const mongoose = require("mongoose");
 
 const validator = require("../../middlewares/validatorMiddleware");
 const userSchema = require("../../models/usersSchema");
 const studentSchema = require("../../models/studentInfoSchema");
+const courseSchema = require("../../models/coursesSchema");
 
 const getUserValidator = [
   // 1) rules
@@ -49,6 +50,21 @@ const createUserVAlidator = [
     .notEmpty()
     .withMessage("Password Confirm is required"),
   check("role").optional(),
+  check("lecturerRole")
+    .optional()
+    .isIn(["instructor", "assistant"])
+    .withMessage("Must choose [instructor or assistant]"),
+  check("lecturerDepartment").optional(),
+  check("lecturerCourses")
+    .optional()
+    .isArray({ min: 1 })
+    .withMessage("Lecturer courses must be a non-empty array")
+    .custom((value) => {
+      if (!value.every((id) => mongoose.Types.ObjectId.isValid(id))) {
+        throw new Error("Invalid course ID(s) provided");
+      }
+      return true;
+    }),
   validator,
 ];
 
@@ -69,6 +85,18 @@ const updateUserValidator = [
       }
     }),
   check("role").optional(),
+  check("lecturerRole").optional(),
+  check("lecturerDepartment").optional(),
+  check("lecturerCourses")
+    .optional()
+    .isArray({ min: 1 })
+    .withMessage("Lecturer courses must be a non-empty array")
+    .custom((value) => {
+      if (!value.every((id) => mongoose.Types.ObjectId.isValid(id))) {
+        throw new Error("Invalid course ID(s) provided");
+      }
+      return true;
+    }),
   validator,
 ];
 
@@ -107,38 +135,6 @@ const deleteUserValidator = [
   check("id").isMongoId().withMessage("Invalid User id format"),
   validator,
 ];
-
-// const updateLoggedUserValidator = [
-//   check("name")
-//     .optional()
-//     .notEmpty()
-//     .withMessage("User name is required")
-//     .isLength({ min: 3, max: 20 })
-//     .withMessage("length of name must between 3 and 20")
-//     .custom((val, { req }) => {
-//       req.body.slug = slugify(val);
-//       return true;
-//     }),
-//   check("email")
-//     .optional()
-//     .notEmpty()
-//     .withMessage("Email is required")
-//     .isEmail()
-//     .withMessage("Invalid email address")
-//     .custom(async (val) => {
-//       const user = await userSchema.findOne({ email: val });
-//       if (user) {
-//         throw new Error("This Email in use");
-//       }
-//     }),
-//   check("phone")
-//     .optional()
-//     .isMobilePhone(["ar-EG", "ar-SA"])
-//     .withMessage("Invalid phone number, Only EGY or SA phone numbers"),
-//   check("profileImage").optional(),
-//   check("role").optional(),
-//   validator,
-// ];
 
 const updateLoggedUserPassword = [
   check("currentPassword")
@@ -195,6 +191,60 @@ const updateLoggedStudentPassword = [
   validator,
 ];
 
+const addCourseToLecturerValidator = [
+  check("courseId")
+    .isMongoId()
+    .withMessage("Invalid course Id")
+    .custom(async (val) => {
+      const course = await courseSchema.findById(val);
+      if (!course) {
+        throw new Error(`There is no course with this id: ${val}`);
+      }
+      return true;
+    }),
+  check("userId")
+    .isMongoId()
+    .withMessage("Invalid user Id")
+    .custom(async (val) => {
+      const user = await userSchema.findById(val);
+      if (!user) {
+        throw new Error(`There is no user with this id: ${val}`);
+      }
+      return true;
+    }),
+  validator,
+];
+
+const removeCourseToLecturerValidator = [
+  check("courseId")
+    .isMongoId()
+    .withMessage("Invalid course Id")
+    .custom(async (val, { req }) => {
+      const course = await courseSchema.findById(val);
+      if (!course) {
+        throw new Error(`There is no course with this id: ${val}`);
+      }
+      const user = await userSchema.findById(req.body.userId);
+      const courseExists = user.lecturerCourses.map(
+        (lecCourse) => lecCourse._id.toString() === val
+      );
+      if (!courseExists || !courseExists.length) {
+        throw new Error(`This lecture doesn't has this course: ${val}`);
+      }
+    }),
+  check("userId")
+    .isMongoId()
+    .withMessage("Invalid user Id")
+    .custom(async (val) => {
+      const user = await userSchema.findById(val);
+      if (!user) {
+        throw new Error(`There is no user with this id: ${val}`);
+      }
+      return true;
+    }),
+  validator,
+];
+
 module.exports = {
   getUserValidator,
   createUserVAlidator,
@@ -203,5 +253,6 @@ module.exports = {
   updatePassword,
   updateLoggedUserPassword,
   updateLoggedStudentPassword,
-  // updateLoggedUserValidator,
+  addCourseToLecturerValidator,
+  removeCourseToLecturerValidator,
 };

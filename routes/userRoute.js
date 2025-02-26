@@ -33,9 +33,14 @@ router
   .put(validatorOfUser.updateUserValidator, userController.updateUser)
   .delete(validatorOfUser.deleteUserValidator, userController.deleteUser);
 
-router.post("/addCourses", userController.addCourseToLecturer);
+router.post(
+  "/addCourses",
+  validatorOfUser.addCourseToLecturerValidator,
+  userController.addCourseToLecturer
+);
 router.delete(
   "/deleteCourses/:courseId",
+  validatorOfUser.removeCourseToLecturerValidator,
   userController.removeCourseFromLecturer
 );
 

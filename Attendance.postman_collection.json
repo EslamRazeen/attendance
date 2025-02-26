@@ -63,9 +63,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/users",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/users",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -92,7 +95,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/users/67b900c3c0dfe21b8c053d32",
+							"raw": "{{URL}}/api/attendanceQRCode/users/67ba2c1efea5991a03565c8d",
 							"host": [
 								"{{URL}}"
 							],
@@ -100,7 +103,7 @@
 								"api",
 								"attendanceQRCode",
 								"users",
-								"67b900c3c0dfe21b8c053d32"
+								"67ba2c1efea5991a03565c8d"
 							]
 						}
 					},
@@ -122,9 +125,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/users/getMe",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/users/getMe",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -153,7 +159,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"role\":\"staff\"\r\n    \r\n}",
+							"raw": "{\r\n    \"lecturerDepartment\":\"CS\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -161,7 +167,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/users/67b4deb9c2f31385064b7f9a",
+							"raw": "{{URL}}/api/attendanceQRCode/users/67b4eb8b8d6cc0ea1489b3c0",
 							"host": [
 								"{{URL}}"
 							],
@@ -169,7 +175,7 @@
 								"api",
 								"attendanceQRCode",
 								"users",
-								"67b4deb9c2f31385064b7f9a"
+								"67b4eb8b8d6cc0ea1489b3c0"
 							]
 						}
 					},
@@ -192,7 +198,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"currentPassword\":\"2282\",\r\n    \"newPassword\": \"2282\",\r\n    \"passwordConfirm\": \"2282\"\r\n    \r\n}",
+							"raw": "{\r\n    \"currentPassword\":\"pass11\",\r\n    \"newPassword\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\"\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -450,7 +456,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"student5\",\r\n    \"email\": \"student5@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"department\": \"AI\",\r\n    \"courses\": [\"67b367db8665c29ac1321626\"]\r\n\r\n}",
+							"raw": "{\r\n    \"name\": \"student1\",\r\n    \"email\": \"student1@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"department\": \"AI\",\r\n    \"courses\": [\"67b8f87450147de33624ea4d\"]\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -694,7 +700,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"islam@gmail.com\",\r\n    \"password\": \"pass11\"\r\n\r\n}",
+							"raw": "{\r\n    \"username\": \"sami@gmail.com\",\r\n    \"password\": \"pass11\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -702,12 +708,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/api/attendanceQRCode/auth/login",
-							"protocol": "http",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/auth/login",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
-							"port": "4000",
 							"path": [
 								"api",
 								"attendanceQRCode",
@@ -734,7 +741,13 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"username\": \"ar@ee.com\",\r\n    \"password\": \"2282\"\r\n}",
@@ -745,12 +758,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/api/attendanceQRCode/auth/student/login",
-							"protocol": "http",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/auth/student/login",
+							"protocol": "https",
 							"host": [
-								"localhost"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
-							"port": "4000",
 							"path": [
 								"api",
 								"attendanceQRCode",
@@ -988,7 +1002,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"course\": \"67b8f82b50147de33624ea49\",\r\n    \"changeSpeed\": 7,\r\n    \"timeWorking\": 30\r\n}",
+							"raw": "{\r\n    \"course\": \"67b8f82b50147de33624ea49\",\r\n    \"changeSpeed\": 7,\r\n    \"timeWorking\": 3000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -996,9 +1010,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/sessions",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/sessions",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -1037,9 +1054,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/sessions",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/sessions",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -1078,15 +1098,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/sessions/67b905704d4927b72c4a5ca9",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/sessions/67bcc7bb03d9c2da990becac",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
 								"attendanceQRCode",
 								"sessions",
-								"67b905704d4927b72c4a5ca9"
+								"67bcc7bb03d9c2da990becac"
 							]
 						}
 					},
@@ -1120,15 +1143,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/sessions/67b8dbcfcd3b1ce69334c63f/qrcode",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/sessions/67bce9874d99d13a928f5190/qrcode",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
 								"attendanceQRCode",
 								"sessions",
-								"67b8dbcfcd3b1ce69334c63f",
+								"67bce9874d99d13a928f5190",
 								"qrcode"
 							]
 						}
@@ -1160,7 +1186,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/sessions/67bc5458c4102c57d2ffc79c",
+							"raw": "{{URL}}/api/attendanceQRCode/sessions/67bcc7bb03d9c2da990becac",
 							"host": [
 								"{{URL}}"
 							],
@@ -1168,7 +1194,7 @@
 								"api",
 								"attendanceQRCode",
 								"sessions",
-								"67bc5458c4102c57d2ffc79c"
+								"67bcc7bb03d9c2da990becac"
 							]
 						}
 					},
@@ -1283,10 +1309,17 @@
 							]
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"student\": \"67b8ff29b4dd631faf25136f\",\r\n    \"sessionID\": \"67bc5458c4102c57d2ffc79c\",\r\n    \"attendanceStatus\": \"present\"\r\n}",
+							"raw": "{\r\n    \"student\": \"67b8ff29b4dd631faf25136f\",\r\n    \"sessionID\": \"67bcc7bb03d9c2da990becac\",\r\n    \"attendanceStatus\": \"absent\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1338,15 +1371,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/attendances/67b906ed0faf2c2a9458c70b",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/attendances/67bcc7bc03d9c2da990becb0",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
 								"attendanceQRCode",
 								"attendances",
-								"67b906ed0faf2c2a9458c70b"
+								"67bcc7bc03d9c2da990becb0"
 							]
 						}
 					},
@@ -1416,15 +1452,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/attendances/67b5f2d0aff8e7c0a86cbad4",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/attendances/67bcc1c04edf92e1cad9aa31",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
 								"attendanceQRCode",
 								"attendances",
-								"67b5f2d0aff8e7c0a86cbad4"
+								"67bcc1c04edf92e1cad9aa31"
 							]
 						}
 					},
@@ -1470,22 +1509,25 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/report/67b8f87450147de33624ea4d",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/report/67b8f80a50147de33624ea46",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
 								"attendanceQRCode",
 								"report",
-								"67b8f87450147de33624ea4d"
+								"67b8f80a50147de33624ea46"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get student report attendances",
+					"name": "(mobile)Get student report attendances",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1531,6 +1573,55 @@
 								"attendanceQRCode",
 								"studentReport",
 								"67b8f82b50147de33624ea49"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get show students for specific lecturer course",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2IzMzIyMTg1NzVjOThlMjFjZjMxN2MiLCJpYXQiOjE3NDAwMDc1OTAsImV4cCI6MTc1NzI4NzU5MH0.AI943N8wHzvLCUgZAiqT_W6YbcmwGWBe46C8s4FW5Tk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/showStudent/67b8f87450147de33624ea4d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"showStudent",
+								"67b8f87450147de33624ea4d"
 							]
 						}
 					},

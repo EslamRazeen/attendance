@@ -5,6 +5,7 @@ const attendanceSchema = new mongoose.Schema(
     sessionID: {
       type: mongoose.Schema.ObjectId,
       ref: "Session",
+      required: true,
     },
     attendanceStatus: {
       type: String,
@@ -13,19 +14,22 @@ const attendanceSchema = new mongoose.Schema(
     },
     scanDate: {
       type: Date,
-      required: true,
+      default: Date.now(),
     },
     student: {
       type: mongoose.Schema.ObjectId,
       ref: "Student",
+      required: true,
     },
     courseId: {
       type: mongoose.Schema.ObjectId,
       ref: "Course",
+      required: true,
     },
     sessionType: {
       type: String,
       enum: ["lecture", "section"],
+      required: true,
     },
   },
   { timestamps: true }

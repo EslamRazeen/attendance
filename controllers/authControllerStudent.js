@@ -93,7 +93,7 @@ const protect = asyncHandler(async (req, res, next) => {
 
 const allowedTo = (...roles) =>
   asyncHandler(async (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
+    if (!roles.includes(req.student.role)) {
       return next(new ApiError(`You cann't access this route`));
     }
     next();

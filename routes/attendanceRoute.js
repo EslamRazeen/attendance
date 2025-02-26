@@ -6,33 +6,33 @@ const attendanceController = require("../controllers/attendanceContrller");
 const authController = require("../controllers/authController");
 const authStudentController = require("../controllers/authControllerStudent");
 const userAndStuentProtect = require("../middlewares/accessUserAndStuentToCreateAttendance");
-// const validatorOfCourse = require("../utils/validators/");
+const validatorOfAttendance = require("../utils/validators/attendanceValidator");
 
 router.post(
   "/",
 
   userAndStuentProtect.userAndStuentProtect,
-  // validatorOfCourse.createBrandVAlidator,
+  validatorOfAttendance.createAttendanceValidator,
   attendanceController.createAttendance
 );
 router.get("/", attendanceController.getAllAttendances);
 router.get(
   "/:id",
-  // validatorOfCourse.getBrandValidator,
+  validatorOfAttendance.getAttendanceValidator,
   attendanceController.getOneAttendance
 );
 router.put(
   "/:id",
   authController.protect,
   authController.allowedTo("staff", "lecturer"),
-  // validatorOfCourse.updateBrandValidator,
+  validatorOfAttendance.updateAttendanceValidator,
   attendanceController.updateAttendance
 );
 router.delete(
   "/:id",
   authController.protect,
   authController.allowedTo("staff", "lecturer"),
-  // validatorOfCourse.deleteBrandValidator,
+  validatorOfAttendance.deleteAttendanceValidator,
   attendanceController.deleteAttendance
 );
 

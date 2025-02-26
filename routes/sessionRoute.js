@@ -5,33 +5,33 @@ const router = express.Router();
 const sessionController = require("../controllers/sessionContrller");
 const authController = require("../controllers/authController");
 const generateQRCodeController = require("../controllers/generateQRcode");
-// const validatorOfCourse = require("../utils/validators/");
+const validatorOfSession = require("../utils/validators/sessionValidator");
 
 router.post(
   "/",
   authController.protect,
   authController.allowedTo("staff", "lecturer"),
-  // validatorOfCourse.createBrandVAlidator,
+  validatorOfSession.createSessionValidator,
   sessionController.createSession
 );
 router.get("/", sessionController.getAllSessions);
 router.get(
   "/:id",
-  // validatorOfCourse.getBrandValidator,
+  validatorOfSession.getSessionValidator,
   sessionController.getOneSession
 );
 router.put(
   "/:id",
   authController.protect,
   authController.allowedTo("staff", "lecturer"),
-  // validatorOfCourse.updateBrandValidator,
+  validatorOfSession.updateSessionValidator,
   sessionController.updateSession
 );
 router.delete(
   "/:id",
   authController.protect,
   authController.allowedTo("staff", "lecturer"),
-  // validatorOfCourse.deleteBrandValidator,
+  validatorOfSession.deleteSessionValidator,
   sessionController.deleteSession
 );
 

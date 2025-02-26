@@ -4,6 +4,7 @@ const sessionSchema = new mongoose.Schema(
   {
     sessionDate: {
       type: Date,
+      default: Date.now(),
       required: true,
     },
     lecturer: {

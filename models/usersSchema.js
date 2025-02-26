@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema(
     lecturerRole: {
       type: String,
       enum: ["instructor", "assistant"],
-      // default: "instructor",
+      default: "instructor",
     },
     lecturerDepartment: {
       type: String,
@@ -39,13 +39,6 @@ const userSchema = new mongoose.Schema(
         ref: "Course",
       },
     ],
-    // studentDepartment: {
-    //   type: String,
-    //   enum: ["CS", "IS", "AI", "BIO"],
-    // },
-    // studentLevel: {
-    //   type: String,
-    // },
   },
   { timestamps: true }
 );

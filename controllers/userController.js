@@ -48,7 +48,8 @@ const addCourseToLecturer = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     status: "Success",
-    message: "Product added successfully to wishlist",
+    message: "Product added successfully to user courses",
+    numberOfCourses: user.lecturerCourses.length,
     data: user.lecturerCourses,
   });
 });
@@ -66,7 +67,8 @@ const removeCourseFromLecturer = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     status: "Success",
-    message: "Product removed successfully from wishlist",
+    message: "Product removed successfully from user courses",
+    numberOfCourses: user.lecturerCourses.length,
     data: user.lecturerCourses,
   });
 });

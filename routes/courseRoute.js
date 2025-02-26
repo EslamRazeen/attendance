@@ -4,33 +4,33 @@ const router = express.Router();
 
 const courseController = require("../controllers/courseController");
 const authController = require("../controllers/authController");
-// const validatorOfCourse = require("../utils/validators/");
+const validatorOfCourse = require("../utils/validators/courseValidator");
 
 router.post(
   "/",
   authController.protect,
   authController.allowedTo("staff"),
-  // validatorOfCourse.createBrandVAlidator,
+  validatorOfCourse.createCourseValidator,
   courseController.createCourse
 );
 router.get("/", courseController.getAllCourses);
 router.get(
   "/:id",
-  // validatorOfCourse.getBrandValidator,
+  validatorOfCourse.getCourseValidator,
   courseController.getOneCourse
 );
 router.put(
   "/:id",
   authController.protect,
   authController.allowedTo("staff"),
-  // validatorOfCourse.updateBrandValidator,
+  validatorOfCourse.updateCourseValidator,
   courseController.updateCourse
 );
 router.delete(
   "/:id",
   authController.protect,
   authController.allowedTo("staff"),
-  // validatorOfCourse.deleteBrandValidator,
+  validatorOfCourse.deleteCourseValidator,
   courseController.deleteCourse
 );
 

@@ -5,4 +5,4 @@ node_modules/
 
 ~$*.xlsx
 
-Attendance.postman_collection.json
+*.postman_collection.json

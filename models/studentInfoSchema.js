@@ -26,14 +26,11 @@ const studentSchema = new mongoose.Schema(
     },
     level: {
       type: String,
+      required: true,
     },
     semester: {
       type: String,
     },
-    // user: {
-    //   type: mongoose.Schema.ObjectId,
-    //   ref: "User",
-    // },
     studentID: {
       type: String,
     },

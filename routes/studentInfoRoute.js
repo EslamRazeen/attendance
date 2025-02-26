@@ -6,7 +6,7 @@ const router = express.Router();
 const studentController = require("../controllers/studentController");
 const authController = require("../controllers/authController");
 const authStudentController = require("../controllers/authControllerStudent");
-const validatorOfUser = require("../utils/validators/userValidator");
+const validatorOfStudent = require("../utils/validators/studentValidator");
 
 const excelParser = require("../middlewares/excelParser");
 const upload = multer({ storage: multer.memoryStorage() });
@@ -15,13 +15,13 @@ const upload = multer({ storage: multer.memoryStorage() });
 router.put(
   "/updateMyPassword",
   authStudentController.protect,
-  validatorOfUser.updateLoggedStudentPassword,
+  validatorOfStudent.updateLoggedStudentPassword,
   studentController.updateLoggedStudentPassword
 );
 
 router.post(
   "/excel",
-  // validatorOfUser.createUserVAlidator,
+  validatorOfStudent.createStudentValidator,
   upload.single("file"),
   excelParser,
   studentController.createUser_student
@@ -30,28 +30,28 @@ router.post(
 router.post(
   "/",
   authController.protect,
-  //   authController.allowedTo("staff", "lecturer"),
-  // validatorOfCourse.createBrandVAlidator,
+  authController.allowedTo("staff", "lecturer"),
+  validatorOfStudent.createStudentValidator,
   studentController.createStudent
 );
 router.get("/", studentController.getAllStudents);
 router.get(
   "/:id",
-  // validatorOfCourse.getBrandValidator,
+  validatorOfStudent.getStudentValidator,
   studentController.getOneStudent
 );
 router.put(
   "/:id",
   authController.protect,
   //   authController.allowedTo("staff", "lecturer"),
-  // validatorOfCourse.updateBrandValidator,
+  validatorOfStudent.updateStudentValidator,
   studentController.updateStudent
 );
 router.delete(
   "/:id",
   authController.protect,
-  //   authController.allowedTo("staff", "lecturer"),
-  // validatorOfCourse.deleteBrandValidator,
+  authController.allowedTo("staff", "lecturer"),
+  validatorOfStudent.deleteStudentValidator,
   studentController.deleteStudent
 );
 
