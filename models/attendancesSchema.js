@@ -29,7 +29,7 @@ const attendanceSchema = new mongoose.Schema(
     sessionType: {
       type: String,
       enum: ["lecture", "section"],
-      // required: true,
+      default: "lecture",
     },
   },
   { timestamps: true }

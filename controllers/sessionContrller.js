@@ -43,7 +43,7 @@ const createSession = asyncHandler(async (req, res, next) => {
         attendanceStatus: "absent",
         scanDate: Date.now(),
         sessionType:
-          req.user.lecturerRole === "instructor" ? "lecture" : "section",
+          req.user.lecturerRole === "instructour" ? "lecture" : "section",
       })
     )
   );
@@ -69,6 +69,7 @@ const createSession = asyncHandler(async (req, res, next) => {
     sessionId: session._id,
     changeSpeed: session.QRcodeChangeSpeed,
     timeWorking: session.QRcodeTimeWorking,
+    sessionType: req.user.lecturerRole,
     qrCode,
   });
 });
