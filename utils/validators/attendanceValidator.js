@@ -24,11 +24,12 @@ const createAttendanceValidator = [
   //     .withMessage("Course id is required")
   //     .isMongoId()
   //     .withMessage("Invalid Course ID"),
-  check("sessionType")
-    .notEmpty()
-    .withMessage("Session type is required")
-    .isIn(["lecture", "section"])
-    .withMessage("Must choose [lecture or section]"),
+
+  // check("sessionType")
+  //   .notEmpty()
+  //   .withMessage("Session type is required")
+  //   .isIn(["lecture", "section"])
+  //   .withMessage("Must choose [lecture or section]"),
   validator,
 ];
 
