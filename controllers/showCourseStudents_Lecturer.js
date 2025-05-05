@@ -25,14 +25,18 @@ const showStudent = asyncHandler(async (req, res, next) => {
 
   const attendances = await Attendance.find({
     courseId: courseID,
-    sessionType: req.user.lecturerRole,
+    sessionType:
+      req.user.lecturerRole === "instructour" ? "lecture" : "section",
   });
+  // console.log(attendances);
 
   let studentAttendanc = 0;
   let arr = [];
   students.forEach((student) => {
     studentAttendanc = attendances.filter(
-      (attendanc) => attendanc.student.toString() === student._id.toString()
+      (attendanc) =>
+        attendanc.student._id.toString() === student._id.toString() &&
+        attendanc.attendanceStatus === "present"
     ).length;
 
     arr.push({

@@ -19,7 +19,11 @@ const attendanceReport = asyncHandler(async (req, res, next) => {
   }
 
   const attendances = await Attendance.find(
-    { courseId: courseID, sessionType: req.user.lecturerRole },
+    {
+      courseId: courseID,
+      sessionType:
+        req.user.lecturerRole === "instructour" ? "lecture" : "section",
+    },
     { student: 1, attendanceStatus: 1, courseId: 1, sessionType: 1 }
   )
     .populate("student", "name") //  -_id
