@@ -12,13 +12,18 @@ const getStudentValidator = [
   validator,
 ];
 
+// const createStudentValidator = [
+
+const { body } = require("express-validator");
+
 const createStudentValidator = [
-  check("name")
+  body("*.name")
     .notEmpty()
     .withMessage("User name is required")
     .isLength({ min: 3, max: 20 })
     .withMessage("length of name must between 3 and 20"),
-  check("email")
+
+  body("*.email")
     .notEmpty()
     .withMessage("Email is required")
     .isEmail()
@@ -29,28 +34,44 @@ const createStudentValidator = [
         throw new Error("This Email in use");
       }
     }),
-  check("password")
+
+  body("*.passwordConfirm")
+    .notEmpty()
+    .withMessage("passwordConfirm is required"),
+
+  body("*.password")
     .notEmpty()
     .withMessage("password is required")
     .isLength({ min: 6 })
     .withMessage("Too short password length")
-    .custom((val, { req }) => {
-      if (val !== req.body.passwordConfirm) {
+    .custom((value, { req, path }) => {
+      const index = path.match(/\d+/)?.[0]; // يجيب رقم العنصر من [0], [1], إلخ
+      const passwordConfirm = req.body?.[index]?.passwordConfirm;
+      if (passwordConfirm === undefined) {
+        throw new Error("passwordConfirm is required");
+      }
+      if (value !== passwordConfirm) {
         throw new Error("Password confirm incorrect");
       }
       return true;
     }),
-  check("role").optional(),
-  check("level")
+
+  body("*.role").optional(),
+
+  body("*.level")
     .notEmpty()
     .withMessage("Student level is required, choose between 1 to 4"),
-  check("semester").optional(),
-  check("studentID").optional(),
-  check("department")
+
+  body("*.semester").optional(),
+
+  body("*.studentID").optional(),
+
+  body("*.department")
     .optional()
     .isIn(["CS", "IS", "AI", "BIO"])
     .withMessage("Department must be one from these [CS, IS, AI, BIO]"),
-  check("courses")
+
+  body("*.courses")
     .optional()
     .isArray({ min: 1 })
     .withMessage("Lecturer courses must be a non-empty array")
@@ -60,8 +81,59 @@ const createStudentValidator = [
       }
       return true;
     }),
-  validator,
+
+  validator, // الـ middleware الذي يتحقق من الأخطاء
 ];
+
+//   check("name")
+//     .notEmpty()
+//     .withMessage("User name is required")
+//     .isLength({ min: 3, max: 20 })
+//     .withMessage("length of name must between 3 and 20"),
+//   check("email")
+//     .notEmpty()
+//     .withMessage("Email is required")
+//     .isEmail()
+//     .withMessage("Invalid email address")
+//     .custom(async (val) => {
+//       const user = await Student.findOne({ email: val });
+//       if (user) {
+//         throw new Error("This Email in use");
+//       }
+//     }),
+//   check("password")
+//     .notEmpty()
+//     .withMessage("password is required")
+//     .isLength({ min: 6 })
+//     .withMessage("Too short password length")
+//     .custom((val, { req }) => {
+//       if (val !== req.body.passwordConfirm) {
+//         throw new Error("Password confirm incorrect");
+//       }
+//       return true;
+//     }),
+//   check("role").optional(),
+//   check("level")
+//     .notEmpty()
+//     .withMessage("Student level is required, choose between 1 to 4"),
+//   check("semester").optional(),
+//   check("studentID").optional(),
+//   check("department")
+//     .optional()
+//     .isIn(["CS", "IS", "AI", "BIO"])
+//     .withMessage("Department must be one from these [CS, IS, AI, BIO]"),
+//   check("courses")
+//     .optional()
+//     .isArray({ min: 1 })
+//     .withMessage("Lecturer courses must be a non-empty array")
+//     .custom((value) => {
+//       if (!value.every((id) => mongoose.Types.ObjectId.isValid(id))) {
+//         throw new Error("Invalid course ID(s) provided");
+//       }
+//       return true;
+//     }),
+//   validator,
+// ];
 
 const updateStudentValidator = [
   check("id").isMongoId().withMessage("Invalid User id format"),
