@@ -16,6 +16,7 @@ const reportOFAttendances = require("./routes/reportAttendanceRoute");
 const reportOFDoctorAttendances = require("./routes/reportOFDoctorRoute");
 const reportOFStudentAttendances = require("./routes/reportStudentAttendanceRoute");
 const reportStaff = require("./routes/reportStaffRoute");
+const reportStaffDoctor = require("./routes/reportOFStaffDoctorRoute");
 const showStudents = require("./routes/showCourseStudentLecRoute");
 
 const database = require("./config/database");
@@ -46,6 +47,7 @@ app.use("/api/attendanceQRCode/report", reportOFAttendances);
 app.use("/api/attendanceQRCode/doctorReport", reportOFDoctorAttendances);
 app.use("/api/attendanceQRCode/studentReport", reportOFStudentAttendances);
 app.use("/api/attendanceQRCode/staffReport", reportStaff);
+app.use("/api/attendanceQRCode/staffDoctorReport", reportStaffDoctor);
 app.use("/api/attendanceQRCode/showStudent", showStudents);
 
 app.all("*", (req, res, next) => {

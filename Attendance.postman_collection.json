@@ -1620,6 +1620,22 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Report of Doctor",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get staff report",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			]
 		}
