@@ -459,7 +459,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"student2\",\r\n    \"email\": \"student2@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"department\": \"AI\",\r\n    \"level\": \"4\",\r\n    \"courses\": [\"67b8f87450147de33624ea4d\"]\r\n\r\n}",
+							"raw": "[{\r\n    \"name\": \"st00\",\r\n    \"email\": \"st00@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"department\": \"AI\",\r\n    \"level\": \"4\"\r\n    // \"courses\": [\"67b8f87450147de33624ea4d\"]\r\n\r\n},\r\n{\r\n    \"name\": \"st0\",\r\n    \"email\": \"st0@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"department\": \"AI\",\r\n    \"level\": \"4\"\r\n    // \"courses\": [\"67b8f87450147de33624ea4d\"]\r\n\r\n}]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -467,9 +467,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/studentInfo",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/studentInfo",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -506,9 +509,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/excel",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/studentInfo/excel",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -703,7 +709,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"bassem@gmail.com\",\r\n    \"password\": \"pass11\"\r\n\r\n}",
+							"raw": "{\r\n    \"username\": \"sami@gmail.com\",\r\n    \"password\": \"pass11\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -850,9 +856,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/courses",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/courses",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -1005,7 +1014,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"course\": \"67b8f87450147de33624ea4d\",\r\n    \"changeSpeed\": 70000,\r\n    \"timeWorking\": 30000\r\n}",
+							"raw": "{\r\n    \"course\": \"67b8f93350147de33624ea57\",\r\n    \"changeSpeed\": 70000,\r\n    \"timeWorking\": 30000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1282,9 +1291,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{VERCEL}}/api/attendanceQRCode/attendances",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/attendances",
+							"protocol": "https",
 							"host": [
-								"{{VERCEL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -1327,9 +1339,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{VERCEL}}/api/attendanceQRCode/attendances",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/attendances",
+							"protocol": "https",
 							"host": [
-								"{{VERCEL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -1506,9 +1521,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{VERCEL}}/api/attendanceQRCode/report/67b8f87450147de33624ea4d",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/report/67b8f87450147de33624ea4d",
+							"protocol": "https",
 							"host": [
-								"{{VERCEL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -1623,17 +1641,122 @@
 				},
 				{
 					"name": "Get Report of Doctor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2025-05-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/doctorReport",
+							"protocol": "https",
+							"host": [
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"doctorReport"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Report of StaffDoctor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/staffDoctorReport/67b900c3c0dfe21b8c053d32",
+							"protocol": "https",
+							"host": [
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"staffDoctorReport",
+								"67b900c3c0dfe21b8c053d32"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get staff report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2025-05-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/staffReport",
+							"protocol": "https",
+							"host": [
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"staffReport"
+							]
+						}
 					},
 					"response": []
 				}

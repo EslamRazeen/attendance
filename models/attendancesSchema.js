@@ -37,7 +37,10 @@ const attendanceSchema = new mongoose.Schema(
 
 attendanceSchema.pre(/^find/, function (next) {
   this.populate([
-    { path: "student", select: { name: 1, courses: 0 } },
+    {
+      path: "student",
+      select: { name: 1, courses: 0, department: 1, level: 1 },
+    },
     { path: "courseId", select: "courseName" },
   ]);
   next();
