@@ -13,7 +13,9 @@ const attendanceRoute = require("./routes/attendanceRoute");
 const studentRoute = require("./routes/studentInfoRoute");
 const authRoute = require("./routes/authRoute");
 const reportOFAttendances = require("./routes/reportAttendanceRoute");
+const reportOFDoctorAttendances = require("./routes/reportOFDoctorRoute");
 const reportOFStudentAttendances = require("./routes/reportStudentAttendanceRoute");
+const reportStaff = require("./routes/reportStaffRoute");
 const showStudents = require("./routes/showCourseStudentLecRoute");
 
 const database = require("./config/database");
@@ -41,7 +43,9 @@ app.use("/api/attendanceQRCode/attendances", attendanceRoute);
 app.use("/api/attendanceQRCode/studentInfo", studentRoute);
 app.use("/api/attendanceQRCode/auth", authRoute);
 app.use("/api/attendanceQRCode/report", reportOFAttendances);
+app.use("/api/attendanceQRCode/doctorReport", reportOFDoctorAttendances);
 app.use("/api/attendanceQRCode/studentReport", reportOFStudentAttendances);
+app.use("/api/attendanceQRCode/staffReport", reportStaff);
 app.use("/api/attendanceQRCode/showStudent", showStudents);
 
 app.all("*", (req, res, next) => {
