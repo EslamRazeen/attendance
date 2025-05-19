@@ -1,4 +1,6 @@
 const asyncHandler = require("express-async-handler");
+const moment = require("moment-timezone");
+
 const Attendance = require("../models/attendancesSchema");
 
 const getAttendanceSummary = asyncHandler(async (req, res) => {
@@ -27,25 +29,11 @@ const getAttendanceSummary = asyncHandler(async (req, res) => {
 
     const daysMap = {};
     for (let i = 0; i < 7; i++) {
-      const date = new Date(startDate);
-      date.setDate(startDate.getDate() + i);
-
-      // اضبط التاريخ المحلي يدويًا
-      const localDate = new Date(
-        date.toLocaleString("en-US", { timeZone: "Africa/Cairo" })
-      );
-
-      const year = localDate.getFullYear();
-      const month = String(localDate.getMonth() + 1).padStart(2, "0");
-      const dayNum = String(localDate.getDate()).padStart(2, "0");
-
-      const key = `${year}-${month}-${dayNum}`; // yyyy-mm-dd
+      const date = moment(startDate).tz("Africa/Cairo").add(i, "days");
+      const key = date.format("YYYY-MM-DD");
       daysMap[key] = {
         date: key,
-        day: localDate.toLocaleDateString("en-US", {
-          weekday: "long",
-          timeZone: "Africa/Cairo",
-        }),
+        day: date.format("dddd"),
         present: 0,
         absent: 0,
       };
