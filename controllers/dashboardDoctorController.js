@@ -29,13 +29,23 @@ const getAttendanceSummary = asyncHandler(async (req, res) => {
     for (let i = 0; i < 7; i++) {
       const date = new Date(startDate);
       date.setDate(startDate.getDate() + i);
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, "0");
-      const dayNum = String(date.getDate()).padStart(2, "0");
+
+      // اضبط التاريخ المحلي يدويًا
+      const localDate = new Date(
+        date.toLocaleString("en-US", { timeZone: "Africa/Cairo" })
+      );
+
+      const year = localDate.getFullYear();
+      const month = String(localDate.getMonth() + 1).padStart(2, "0");
+      const dayNum = String(localDate.getDate()).padStart(2, "0");
+
       const key = `${year}-${month}-${dayNum}`; // yyyy-mm-dd
       daysMap[key] = {
         date: key,
-        day: date.toLocaleDateString("en-US", { weekday: "long" }),
+        day: localDate.toLocaleDateString("en-US", {
+          weekday: "long",
+          timeZone: "Africa/Cairo",
+        }),
         present: 0,
         absent: 0,
       };
