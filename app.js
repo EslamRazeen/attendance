@@ -19,6 +19,8 @@ const reportStaff = require("./routes/reportStaffRoute");
 const reportStaffDoctor = require("./routes/reportOFStaffDoctorRoute");
 const showStudents = require("./routes/showCourseStudentLecRoute");
 const manualAttendace = require("./routes/manualAttendanceRoute");
+const dashboardDoctor = require("./routes/dashboardDoctorRoute");
+const dashboardAdmin = require("./routes/dashboardAdminRoute");
 
 const database = require("./config/database");
 
@@ -51,6 +53,8 @@ app.use("/api/attendanceQRCode/staffReport", reportStaff);
 app.use("/api/attendanceQRCode/staffDoctorReport", reportStaffDoctor);
 app.use("/api/attendanceQRCode/showStudent", showStudents);
 app.use("/api/attendanceQRCode/manualAttendace", manualAttendace);
+app.use("/api/attendanceQRCode/dashboardDoctor", dashboardDoctor);
+app.use("/api/attendanceQRCode/dashboardAdmin", dashboardAdmin);
 
 app.all("*", (req, res, next) => {
   // Create Error and send it to the next middleware (Error Handling Middleware)
