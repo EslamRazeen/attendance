@@ -6,7 +6,7 @@ const reportOFStaffDoctorAttendancesController = require("../controllers/reportO
 const authController = require("../controllers/authController");
 
 router
-  .route("/:courseId")
+  .route("/:userId")
   .get(
     authController.protect,
     reportOFStaffDoctorAttendancesController.attendanceReport

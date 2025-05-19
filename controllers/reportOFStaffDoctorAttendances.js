@@ -4,16 +4,15 @@ const Attendance = require("../models/attendancesSchema");
 const User = require("../models/usersSchema");
 
 const attendanceReport = asyncHandler(async (req, res, next) => {
-  const userCourses = await User.findById(req.params.courseId);
+  const user = await User.findById(req.params.userId);
 
-  const lecturerCourseIds = userCourses.lecturerCourses.map((course) =>
+  const lecturerCourseIds = user.lecturerCourses.map((course) =>
     course._id.toString()
   );
 
   const reportOfUserCourses = await Attendance.find({
     courseId: { $in: lecturerCourseIds },
-    sessionType:
-      userCourses.lecturerRole === "instructour" ? "lecture" : "section",
+    sessionType: user.lecturerRole === "instructour" ? "lecture" : "section",
   });
 
   let absent = 0,
