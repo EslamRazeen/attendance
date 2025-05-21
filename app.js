@@ -36,32 +36,56 @@ app.use(express.json());
 //     credentials: true,
 //   })
 // );
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:3000",
+//       "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app",
+//       "https://attendance-front-main.vercel.app/",
+//       "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
+//       "https://attendance-main-main-dzsmi736x-abdelrahman-ali-arafa1s-projects.vercel.app/",
+//     ],
+
+//     credentials: true, // مهم جدًا
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // تأكد من السماح بكل الطرق
+//   })
+// );
+
+// app.use(cookieParser());
+// app.options(
+//   "*",
+//   cors({
+//     origin: [
+//       "https://attendance-front-main.vercel.app",
+//       "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
+//     ],
+//     credentials: true,
+//   })
+// );
+
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app",
+  "https://attendance-front-main.vercel.app",
+  "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
+  "https://attendance-main-main-dzsmi736x-abdelrahman-ali-arafa1s-projects.vercel.app",
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app",
-      "https://attendance-front-main.vercel.app/",
-      "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
-      "https://attendance-main-main-dzsmi736x-abdelrahman-ali-arafa1s-projects.vercel.app/",
-    ],
-
-    credentials: true, // مهم جدًا
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // تأكد من السماح بكل الطرق
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   })
 );
 
 app.use(cookieParser());
-app.options(
-  "*",
-  cors({
-    origin: [
-      "https://attendance-front-main.vercel.app",
-      "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
-    ],
-    credentials: true,
-  })
-);
 
 // database
 database();
