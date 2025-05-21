@@ -38,8 +38,13 @@ app.use(express.json());
 // );
 app.use(
   cors({
-    origin:
+    origin: [
+      "http://localhost:3000",
+      "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app",
       "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
+      "https://attendance-front-main.vercel.app/",
+    ],
+
     credentials: true, // مهم جدًا
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // تأكد من السماح بكل الطرق
   })
