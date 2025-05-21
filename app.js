@@ -26,15 +26,23 @@ const database = require("./config/database");
 
 const app = express();
 app.use(express.json());
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:3000",
+//       "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app",
+//     ],
+//     credentials: true,
+//   })
+// );
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app",
-    ],
+    origin:
+      "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
     credentials: true,
   })
 );
+app.use(cookieParser());
 
 // database
 database();

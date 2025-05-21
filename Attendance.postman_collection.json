@@ -26,7 +26,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"islam\",\r\n    \"email\": \"islam@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"lecturerRole\": \"instructour\",\r\n    \"lecturerDepartment\": \"CS\",\r\n    \"lecturerCourses\": [\"67b8f80a50147de33624ea46\", \"67b8f87450147de33624ea4d\", \"67b8f93350147de33624ea57\"]\r\n\r\n}",
+							"raw": "{\r\n    \"name\": \"Eltony\",\r\n    \"email\": \"tony@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"lecturerRole\": \"assistant\",\r\n    \"lecturerDepartment\": \"CS\",\r\n    \"lecturerCourses\": [\"67b8f80a50147de33624ea46\", \"67b8f87450147de33624ea4d\", \"67b8f93350147de33624ea57\"]\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -34,9 +34,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/users",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/users",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -167,9 +170,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/users/67b4eb8b8d6cc0ea1489b3c0",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/users/67b4eb8b8d6cc0ea1489b3c0",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -236,9 +242,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/users/67b4ea698d6cc0ea1489b3b9",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/users/67b4ea698d6cc0ea1489b3b9",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -306,7 +315,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"userId\": \"67b70c9d9d14510649f68fa5\"\r\n}",
+							"raw": "{\r\n    \"userId\": \"682bf3962fc52bb549dcf68e\"\r\n    \r\n            // courses for testing its IDs in params\r\n            //     \"_id\": \"67b8f88250147de33624ea50\",\r\n            //     \"courseName\": \"Parllel\"\r\n            // },\r\n            // {\r\n            //     \"_id\": \"67b8f94c50147de33624ea5a\",\r\n            //     \"courseName\": \"Geographic IS\"\r\n            // },\r\n            // {\r\n            //     \"_id\": \"67b8f97b50147de33624ea60\",\r\n            //     \"courseName\": \"Social Informatics\"\r\n            // },\r\n            // {\r\n            //     \"_id\": \"67b8f99850147de33624ea63\",\r\n            //     \"courseName\": \"Human Computer Interaction\"\r\n            // },\r\n            // {\r\n            //     \"_id\": \"67b8f95e50147de33624ea5d\",\r\n            //     \"courseName\": \"Intelligent IS\"\r\n            // },\r\n            // {\r\n            //     \"_id\": \"67b8f8a550147de33624ea53\",\r\n            //     \"courseName\": \"Roboics\"\r\n            // }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -314,16 +323,19 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/users/deleteCourses/67b8f80a50147de33624ea46",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/users/deleteCourses/67b8f9dc50147de33624ea69",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
 								"attendanceQRCode",
 								"users",
 								"deleteCourses",
-								"67b8f80a50147de33624ea46"
+								"67b8f9dc50147de33624ea69"
 							]
 						}
 					},
@@ -459,7 +471,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[{\r\n    \"name\": \"st00\",\r\n    \"email\": \"st00@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"department\": \"AI\",\r\n    \"level\": \"4\"\r\n    // \"courses\": [\"67b8f87450147de33624ea4d\"]\r\n\r\n},\r\n{\r\n    \"name\": \"st0\",\r\n    \"email\": \"st0@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"department\": \"AI\",\r\n    \"level\": \"4\"\r\n    // \"courses\": [\"67b8f87450147de33624ea4d\"]\r\n\r\n}]",
+							"raw": "[{\r\n    \"name\": \"Mohsen\",\r\n    \"email\": \"mohsen@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"department\": \"BIO\",\r\n    \"level\": \"4\"\r\n    // \"courses\": [\"67b8f87450147de33624ea4d\"]\r\n\r\n},\r\n{\r\n    \"name\": \"Muhammeden\",\r\n    \"email\": \"muhammeden@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"department\": \"IS\",\r\n    \"level\": \"4\"\r\n    // \"courses\": [\"67b8f87450147de33624ea4d\"]\r\n\r\n}]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1014,7 +1026,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"course\": \"67b8f93350147de33624ea57\",\r\n    \"changeSpeed\": 70000,\r\n    \"timeWorking\": 30000\r\n}",
+							"raw": "{\r\n    \"course\": \"67b8f87450147de33624ea4d\",//\"67b8f93350147de33624ea57\",\r\n    \"changeSpeed\": 70000,\r\n    \"timeWorking\": 30000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1155,7 +1167,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/sessions/67bce9874d99d13a928f5190/qrcode",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/sessions/682a34f0f76e34a4d2b95893/qrcode",
 							"protocol": "https",
 							"host": [
 								"attendance-eslamrazeen-eslam-razeens-projects",
@@ -1166,7 +1178,7 @@
 								"api",
 								"attendanceQRCode",
 								"sessions",
-								"67bce9874d99d13a928f5190",
+								"682a34f0f76e34a4d2b95893",
 								"qrcode"
 							]
 						}
@@ -1625,9 +1637,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{VERCEL}}/api/attendanceQRCode/showStudent/67b8f87450147de33624ea4d",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/showStudent/67b8f87450147de33624ea4d",
+							"protocol": "https",
 							"host": [
-								"{{VERCEL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -1641,9 +1656,6 @@
 				},
 				{
 					"name": "Get Report of Doctor",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1655,7 +1667,7 @@
 								}
 							]
 						},
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -1718,9 +1730,6 @@
 				},
 				{
 					"name": "Get staff report",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1732,11 +1741,11 @@
 								}
 							]
 						},
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"date\": \"2025-05-16\"\r\n}",
+							"raw": "{\r\n    \"date\": \"2025-05-19\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1755,6 +1764,144 @@
 								"api",
 								"attendanceQRCode",
 								"staffReport"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get manual attendance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2IzMzIyMTg1NzVjOThlMjFjZjMxN2MiLCJpYXQiOjE3NDAwMDc1OTAsImV4cCI6MTc1NzI4NzU5MH0.AI943N8wHzvLCUgZAiqT_W6YbcmwGWBe46C8s4FW5Tk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/manualAttendace/682a57026bbab0dba3c1f9ed",
+							"protocol": "https",
+							"host": [
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"manualAttendace",
+								"682a57026bbab0dba3c1f9ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard Doctor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"range\": \"this week\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/dashboardDoctor/67b8f87450147de33624ea4d",
+							"protocol": "https",
+							"host": [
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"dashboardDoctor",
+								"67b8f87450147de33624ea4d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard Admin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/dashboardAdmin",
+							"protocol": "https",
+							"host": [
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"dashboardAdmin"
 							]
 						}
 					},
