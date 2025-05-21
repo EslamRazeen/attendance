@@ -56,7 +56,7 @@ app.options(
   "*",
   cors({
     origin: [
-      "https://attendance-front-main.vercel.app/",
+      "https://attendance-front-main.vercel.app",
       "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
     ],
     credentials: true,
