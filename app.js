@@ -55,8 +55,10 @@ app.use(cookieParser());
 app.options(
   "*",
   cors({
-    origin:
+    origin: [
+      "https://attendance-front-main.vercel.app/",
       "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
+    ],
     credentials: true,
   })
 );
