@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const ApiError = require("./utils/apiError");
@@ -39,10 +40,20 @@ app.use(
   cors({
     origin:
       "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
+    credentials: true, // مهم جدًا
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // تأكد من السماح بكل الطرق
+  })
+);
+
+app.use(cookieParser());
+app.options(
+  "*",
+  cors({
+    origin:
+      "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
     credentials: true,
   })
 );
-app.use(cookieParser());
 
 // database
 database();
