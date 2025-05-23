@@ -56,8 +56,27 @@ const createUser_student = asyncHandler(async (req, res, next) => {
 });
 
 const createStudent = asyncHandler(async (req, res) => {
-  const document = await studentInfoSchema.insertMany(req.body);
-  res.status(200).json({ data: document });
+  const students = [];
+  let matchedCourses = [];
+  for (const student of req.body) {
+    matchedCourses = await Course.find({
+      department: student.department,
+      level: student.level,
+      // semester: student.semester,
+    });
+    student.courses = matchedCourses.map((course) => course._id);
+    students.push(student);
+  }
+
+  const documents = await studentInfoSchema.insertMany(students);
+  const insertedIds = documents.map((doc) => doc._id);
+
+  // i used .find because i want to show courses name and id
+  const newStudents = await studentInfoSchema.find({
+    _id: { $in: insertedIds },
+  });
+
+  res.status(200).json({ data: newStudents });
 });
 // factory.createDocument(StudentInfoSchema);
 
