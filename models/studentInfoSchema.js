@@ -43,7 +43,7 @@ const studentSchema = new mongoose.Schema(
 );
 
 studentSchema.pre("save", async function (next) {
-  // Hashin password in case of create
+  if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 12);
   next();
 });

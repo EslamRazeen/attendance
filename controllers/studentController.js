@@ -65,6 +65,7 @@ const createStudent = asyncHandler(async (req, res) => {
       // semester: student.semester,
     });
     student.courses = matchedCourses.map((course) => course._id);
+    student.password = await bcrypt.hash(student.password, 12);
     students.push(student);
   }
 
@@ -84,7 +85,25 @@ const getAllStudents = factory.getAllDocuments(StudentInfoSchema);
 
 const getOneStudent = factory.getOneDocument(StudentInfoSchema);
 
-const updateStudent = factory.updateDocument(StudentInfoSchema);
+const updateStudent = asyncHandler(async (req, res, next) => {
+  const document = await StudentInfoSchema.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      new: true,
+    }
+  );
+  if (!document) {
+    return next(new ApiError(`There is no document with this id`, 404));
+  }
+  // console.log(req.body);
+
+  res.status(200).json({
+    message: "document updated successfully",
+    data: document,
+  });
+});
+//factory.updateDocument(StudentInfoSchema);
 
 const deleteStudent = factory.deleteDocument(StudentInfoSchema);
 

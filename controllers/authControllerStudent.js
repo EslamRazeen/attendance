@@ -25,6 +25,14 @@ const login = asyncHandler(async (req, res, next) => {
   const user = await studentSchema.findOne({ email: username });
   const pass = await bcrypt.compare(password, user.password);
 
+  // console.log(user.password);
+  // console.log(pass);
+
+  // if (!pass) {
+  //   //|| !(await bcrypt.compare(password, user.password))
+  //   return next(new ApiError(`Password incorrect`, 404));
+  // }
+
   if (!user || !pass) {
     //|| !(await bcrypt.compare(password, user.password))
     return next(new ApiError(`Email or Password incorrect`, 404));
