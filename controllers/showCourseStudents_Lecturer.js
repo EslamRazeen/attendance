@@ -1,13 +1,25 @@
 const asyncHandler = require("express-async-handler");
 
 const Attendance = require("../models/attendancesSchema");
+const Session = require("../models/sessionsSchema");
 const User = require("../models/usersSchema");
 const Student = require("../models/studentInfoSchema");
 
 const showStudent = asyncHandler(async (req, res, next) => {
   const { courseID } = req.params;
+  const datee = req.body.date || "03/06/1800";
+  const [day, month, year] = datee.split("/");
+
+  const startOfDay = new Date(`${year}-${month}-${day}T00:00:00Z`);
+
+  const endOfDay = new Date(`${year}-${month}-${day}T23:59:59Z`);
+
+  // const sessions = await Session.find({
+  //   course: { $in: [courseID] },
+  // });
 
   const userCourses = await User.findById(req.user._id);
+  console.log(userCourses);
 
   const lecturerCourseIds = userCourses.lecturerCourses.map((course) =>
     course._id.toString()
@@ -45,7 +57,31 @@ const showStudent = asyncHandler(async (req, res, next) => {
     });
   });
 
-  res.json({ resutl: students.length, students: arr });
+  const result = await Attendance.find({
+    courseId: courseID,
+    createdAt: {
+      $gte: startOfDay,
+      $lte: endOfDay,
+    },
+    attendanceStatus: "present",
+    sessionType:
+      req.user.lecturerRole === "instructour" ? "lecture" : "section",
+  });
+
+  const uniqeStudentIds = Array.from(
+    new Set(result.map((att) => att.student._id.toString()))
+  );
+
+  const uniqueStudents = await Student.find({
+    _id: { $in: uniqeStudentIds },
+  });
+
+  res.json({
+    resutl: students.length,
+    students: arr,
+    result2: uniqueStudents.length,
+    presntsINDate: uniqueStudents,
+  });
 });
 
 module.exports = {

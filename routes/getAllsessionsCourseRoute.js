@@ -2,11 +2,11 @@ const express = require("express");
 
 const router = express.Router();
 
-const showStudents = require("../controllers/showCourseStudents_Lecturer");
+const sessionsCourse = require("../controllers/getAllsessionsOFSpecifcCourse");
 const authController = require("../controllers/authController");
 
 router
-  .route("/:courseID")
-  .post(authController.protect, showStudents.showStudent);
+  .route("/:courseId")
+  .get(authController.protect, sessionsCourse.sessionsCourse);
 
 module.exports = router;

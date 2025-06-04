@@ -103,7 +103,43 @@ const updateStudent = asyncHandler(async (req, res, next) => {
     data: document,
   });
 });
-//factory.updateDocument(StudentInfoSchema);
+
+const addCourseToStudent = asyncHandler(async (req, res, next) => {
+  const { studentId, courseId } = req.body;
+
+  const student = await studentInfoSchema.findByIdAndUpdate(
+    studentId,
+    {
+      $addToSet: { courses: courseId },
+    },
+    {
+      new: true,
+    }
+  );
+  res.status(200).json({
+    message: "Course added successfully to student courses",
+    numberOfCourses: student.courses.length,
+    data: student.courses,
+  });
+});
+
+const removeCourseFromStudent = asyncHandler(async (req, res, next) => {
+  const { studentId } = req.body;
+  const student = await studentInfoSchema.findByIdAndUpdate(
+    studentId,
+    {
+      $pull: { courses: req.params.courseId },
+    },
+    {
+      new: true,
+    }
+  );
+  res.status(200).json({
+    message: "Course removed successfully from studnet courses",
+    numberOfCourses: student.courses.length,
+    data: student.courses,
+  });
+});
 
 const deleteStudent = factory.deleteDocument(StudentInfoSchema);
 
@@ -125,4 +161,6 @@ module.exports = {
   deleteStudent,
   createUser_student,
   updateLoggedStudentPassword,
+  addCourseToStudent,
+  removeCourseFromStudent,
 };

@@ -55,4 +55,16 @@ router.delete(
   studentController.deleteStudent
 );
 
+// Add and Remove course from studnets
+router.post(
+  "/addCourse",
+  authController.protect,
+  studentController.addCourseToStudent
+);
+router.delete(
+  "/removeCourse/:courseId",
+  authController.protect,
+  studentController.removeCourseFromStudent
+);
+
 module.exports = router;

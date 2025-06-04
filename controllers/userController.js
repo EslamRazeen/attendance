@@ -40,7 +40,7 @@ const addCourseToLecturer = asyncHandler(async (req, res, next) => {
   const user = await userSchema.findByIdAndUpdate(
     userId,
     {
-      // $addToSet => add product to wishlist array only once
+      // $addToSet => add product to lecturerCourses array only once
       $addToSet: { lecturerCourses: courseId },
     },
     { new: true }
@@ -48,7 +48,7 @@ const addCourseToLecturer = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     status: "Success",
-    message: "Product added successfully to user courses",
+    message: "Course added successfully to user courses",
     numberOfCourses: user.lecturerCourses.length,
     data: user.lecturerCourses,
   });
@@ -59,7 +59,7 @@ const removeCourseFromLecturer = asyncHandler(async (req, res, next) => {
   const user = await userSchema.findByIdAndUpdate(
     userId,
     {
-      // $pull => remove product from wishlist array if exists
+      // $pull => remove product from lecturerCourses array if exists
       $pull: { lecturerCourses: req.params.courseId },
     },
     { new: true }
@@ -67,7 +67,7 @@ const removeCourseFromLecturer = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     status: "Success",
-    message: "Product removed successfully from user courses",
+    message: "Course removed successfully from user courses",
     numberOfCourses: user.lecturerCourses.length,
     data: user.lecturerCourses,
   });

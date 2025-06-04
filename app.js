@@ -22,46 +22,14 @@ const showStudents = require("./routes/showCourseStudentLecRoute");
 const manualAttendace = require("./routes/manualAttendanceRoute");
 const dashboardDoctor = require("./routes/dashboardDoctorRoute");
 const dashboardAdmin = require("./routes/dashboardAdminRoute");
+const apology = require("./routes/apologiesRoute");
+const updateMyGrade = require("./routes/updateMyGradeRoute");
+const sessionsCourse = require("./routes/getAllsessionsCourseRoute");
 
 const database = require("./config/database");
 
 const app = express();
 app.use(express.json());
-// app.use(
-//   cors({
-//     origin: [
-//       "http://localhost:3000",
-//       "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app",
-//     ],
-//     credentials: true,
-//   })
-// );
-// app.use(
-//   cors({
-//     origin: [
-//       "http://localhost:3000",
-//       "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app",
-//       "https://attendance-front-main.vercel.app/",
-//       "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
-//       "https://attendance-main-main-dzsmi736x-abdelrahman-ali-arafa1s-projects.vercel.app/",
-//     ],
-
-//     credentials: true, // مهم جدًا
-//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // تأكد من السماح بكل الطرق
-//   })
-// );
-
-// app.use(cookieParser());
-// app.options(
-//   "*",
-//   cors({
-//     origin: [
-//       "https://attendance-front-main.vercel.app",
-//       "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
-//     ],
-//     credentials: true,
-//   })
-// );
 
 const allowedOrigins = [
   "http://localhost:3000",
@@ -90,6 +58,8 @@ app.use(cookieParser());
 // database
 database();
 
+app.use("/uploads", express.static("uploads"));
+
 // Mount Routes
 app.use("/api/attendanceQRCode/users", userRoute);
 app.use("/api/attendanceQRCode/courses", courseRoute);
@@ -106,6 +76,9 @@ app.use("/api/attendanceQRCode/showStudent", showStudents);
 app.use("/api/attendanceQRCode/manualAttendace", manualAttendace);
 app.use("/api/attendanceQRCode/dashboardDoctor", dashboardDoctor);
 app.use("/api/attendanceQRCode/dashboardAdmin", dashboardAdmin);
+app.use("/api/attendanceQRCode/apology", apology);
+app.use("/api/attendanceQRCode/updateMyGrade", updateMyGrade);
+app.use("/api/attendanceQRCode/sessionsCourse", sessionsCourse);
 
 app.all("*", (req, res, next) => {
   // Create Error and send it to the next middleware (Error Handling Middleware)
