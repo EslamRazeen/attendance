@@ -86,6 +86,20 @@ const getAllStudents = factory.getAllDocuments(StudentInfoSchema);
 const getOneStudent = factory.getOneDocument(StudentInfoSchema);
 
 const updateStudent = asyncHandler(async (req, res, next) => {
+  const student = await studentInfoSchema.findById(req.params.id);
+  if (!student) {
+    return next(new ApiError(`There is no student with this id`, 404));
+  }
+  const isLevelChanged =
+    req.body.hasOwnProperty("level") && req.body.level !== student.level;
+  if (isLevelChanged) {
+    const newCourses = await Course.find({
+      level: req.body.level,
+      department: student.department,
+    });
+    req.body.courses = newCourses.map((course) => course._id);
+  }
+
   const document = await StudentInfoSchema.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -99,7 +113,7 @@ const updateStudent = asyncHandler(async (req, res, next) => {
   // console.log(req.body);
 
   res.status(200).json({
-    message: "document updated successfully",
+    message: "Student updated successfully",
     data: document,
   });
 });

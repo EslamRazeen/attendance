@@ -471,7 +471,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[{\r\n    \"name\": \"Mohsen\",\r\n    \"email\": \"mohsen@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"department\": \"BIO\",\r\n    \"level\": \"4\"\r\n    // \"courses\": [\"67b8f87450147de33624ea4d\"]\r\n\r\n},\r\n{\r\n    \"name\": \"Muhammeden\",\r\n    \"email\": \"muhammeden@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"department\": \"IS\",\r\n    \"level\": \"4\"\r\n    // \"courses\": [\"67b8f87450147de33624ea4d\"]\r\n\r\n}]",
+							"raw": "[\r\n//     {\r\n//     \"name\": \"Mohsen\",\r\n//     \"email\": \"moh@gmail.com\",\r\n//     \"password\": \"pass11\",\r\n//     \"passwordConfirm\": \"pass11\",\r\n//     \"department\": \"BIO\",\r\n//     \"level\": \"4\"\r\n//     // \"courses\": [\"67b8f87450147de33624ea4d\"]\r\n\r\n// },\r\n{\r\n    \"name\": \"eee\",\r\n    \"email\": \"ee@gmail.com\",\r\n    \"password\": \"pass11\",\r\n    \"passwordConfirm\": \"pass11\",\r\n    \"department\": \"IS\",\r\n    \"level\": \"4\"\r\n    // \"courses\": [\"67b8f87450147de33624ea4d\"]\r\n\r\n}]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -479,12 +479,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/studentInfo",
-							"protocol": "https",
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo",
 							"host": [
-								"attendance-eslamrazeen-eslam-razeens-projects",
-								"vercel",
-								"app"
+								"{{URL}}"
 							],
 							"path": [
 								"api",
@@ -555,7 +552,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"AbdElrahman Ali arafa\"\r\n    \r\n}",
+							"raw": "{\r\n    // \"name\": \"AbdElrahman Ali\"\r\n    \"email\": \"eee2@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -563,7 +560,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/67b4f383f994799a667c849d",
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/683f5874e19ac242ac35ab0c",
 							"host": [
 								"{{URL}}"
 							],
@@ -571,7 +568,7 @@
 								"api",
 								"attendanceQRCode",
 								"studentInfo",
-								"67b4f383f994799a667c849d"
+								"683f5874e19ac242ac35ab0c"
 							]
 						}
 					},
@@ -602,7 +599,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/67b74b1ffc4ef191e5a2b009",
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/6825f900a93bcbc6409a787c",
 							"host": [
 								"{{URL}}"
 							],
@@ -610,7 +607,7 @@
 								"api",
 								"attendanceQRCode",
 								"studentInfo",
-								"67b74b1ffc4ef191e5a2b009"
+								"6825f900a93bcbc6409a787c"
 							]
 						}
 					},
@@ -650,6 +647,85 @@
 								"attendanceQRCode",
 								"studentInfo",
 								"updateMyPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add studnet course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"studentId\": \"683f5b7225df198faa851269\",\r\n    \"courseId\": \"67b8f88250147de33624ea50\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/addCourse",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"studentInfo",
+								"addCourse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove student course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"studentId\": \"683f5b7225df198faa851269\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/removeCourse/67b8f88250147de33624ea50",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"studentInfo",
+								"removeCourse",
+								"67b8f88250147de33624ea50"
 							]
 						}
 					},
@@ -721,7 +797,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"sami@gmail.com\",\r\n    \"password\": \"pass11\"\r\n\r\n}",
+							"raw": "{\r\n    \"username\": \"bassem@gmail.com\",\r\n    \"password\": \"pass11\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -771,7 +847,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"na@ee.com\",\r\n    \"password\": \"2282\"\r\n}",
+							"raw": "{\r\n    \"username\": \"ddd1@gmail.com\",\r\n    // \"username\": \"na1@ee.com\",\r\n    \"password\": \"pass11\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -779,12 +855,9 @@
 							}
 						},
 						"url": {
-							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/auth/student/login",
-							"protocol": "https",
+							"raw": "{{URL}}/api/attendanceQRCode/auth/student/login",
 							"host": [
-								"attendance-eslamrazeen-eslam-razeens-projects",
-								"vercel",
-								"app"
+								"{{URL}}"
 							],
 							"path": [
 								"api",
@@ -819,7 +892,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"courseName\": \"OOP\",\r\n    \"courseCode\": \"48002033\",\r\n    \"department\": \"CS\",\r\n    \"semester\": \"4\",\r\n    \"level\": \"2\"\r\n\r\n}",
+							"raw": "{\r\n    \"courseName\": \"Intelligent Agents\",\r\n    \"courseCode\": \"11121501\",\r\n    \"department\": \"AI\",\r\n    \"semester\": \"2\",\r\n    \"level\": \"3\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -943,7 +1016,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"schedul\": [\"thursday-1pm\", \"sunday-9am\"]\r\n}",
+							"raw": "{\r\n    \"level\": \"2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -951,7 +1024,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/courses/67b366be8665c29ac1321618",
+							"raw": "{{URL}}/api/attendanceQRCode/courses/68400cbe1174d6ad09cacca3",
 							"host": [
 								"{{URL}}"
 							],
@@ -959,7 +1032,7 @@
 								"api",
 								"attendanceQRCode",
 								"courses",
-								"67b366be8665c29ac1321618"
+								"68400cbe1174d6ad09cacca3"
 							]
 						}
 					},
@@ -990,15 +1063,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/courses/67b367bc8665c29ac1321620",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/courses/67b8f87450147de33624ea4d",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
 								"attendanceQRCode",
 								"courses",
-								"67b367bc8665c29ac1321620"
+								"67b8f87450147de33624ea4d"
 							]
 						}
 					},
@@ -1026,7 +1102,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"course\": \"67b8f87450147de33624ea4d\",//\"67b8f93350147de33624ea57\",\r\n    \"changeSpeed\": 70000,\r\n    \"timeWorking\": 30000\r\n}",
+							"raw": "{\r\n    \"course\": \"67b8f80a50147de33624ea46\",//\"67b8f93350147de33624ea57\",\r\n    \"changeSpeed\": 70000,\r\n    \"timeWorking\": 30000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1258,6 +1334,36 @@
 								"attendanceQRCode",
 								"sessions",
 								"67b369758665c29ac132162a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get sessionsCourse",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/sessionsCourse/67b8f80a50147de33624ea46",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"sessionsCourse",
+								"67b8f80a50147de33624ea46"
 							]
 						}
 					},
@@ -1533,7 +1639,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/report/67b8f87450147de33624ea4d",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/report/67b8f80a50147de33624ea46",
 							"protocol": "https",
 							"host": [
 								"attendance-eslamrazeen-eslam-razeens-projects",
@@ -1544,7 +1650,7 @@
 								"api",
 								"attendanceQRCode",
 								"report",
-								"67b8f87450147de33624ea4d"
+								"67b8f80a50147de33624ea46"
 							]
 						}
 					},
@@ -1604,9 +1710,6 @@
 				},
 				{
 					"name": "Get show students for specific lecturer course",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1618,7 +1721,7 @@
 								}
 							]
 						},
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
@@ -1629,7 +1732,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\r\n    \"date\":\"03/06/2025\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1637,18 +1740,15 @@
 							}
 						},
 						"url": {
-							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/showStudent/67b8f87450147de33624ea4d",
-							"protocol": "https",
+							"raw": "{{URL}}/api/attendanceQRCode/showStudent/67b8f80a50147de33624ea46",
 							"host": [
-								"attendance-eslamrazeen-eslam-razeens-projects",
-								"vercel",
-								"app"
+								"{{URL}}"
 							],
 							"path": [
 								"api",
 								"attendanceQRCode",
 								"showStudent",
-								"67b8f87450147de33624ea4d"
+								"67b8f80a50147de33624ea46"
 							]
 						}
 					},
@@ -1902,6 +2002,171 @@
 								"api",
 								"attendanceQRCode",
 								"dashboardAdmin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Apologies",
+			"item": [
+				{
+					"name": "Create Student Apology",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "course",
+									"value": "67b8f87450147de33624ea4d",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "I was a patient",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/nmt/Pictures/Picture1.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/apology",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"apology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review Apology",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"rejected\",\r\n    \"reason\": \"You apology is rejected\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/apology/682e43524151769bb2230b01",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"apology",
+								"682e43524151769bb2230b01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get apologies for instructor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/apology",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"apology"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Update Grade",
+			"item": [
+				{
+					"name": "UpdateMyGrade",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"studentIds\": [\"683f72c8d2b640274ec89988\", \"683f72c8d2b640274ec89987\", \"683f72c8d2b640274ec89986\"],\r\n    \"level\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/updateMyGrade",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"updateMyGrade"
 							]
 						}
 					},
