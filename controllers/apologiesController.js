@@ -5,6 +5,7 @@ const Student = require("../models/studentInfoSchema");
 const Notification = require("../models/notificationSchema");
 
 const createApology = asyncHandler(async (req, res, next) => {
+  // console.log("REQ FILE:", req.file);
   const { course, description, image } = req.body;
 
   const studentCourse = await Student.findOne({

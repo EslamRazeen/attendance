@@ -8,6 +8,7 @@ const authStudentController = require("../controllers/authControllerStudent");
 
 router.post(
   "/",
+
   authStudentController.protect,
   //   allowedTo("student"),
   upload.single("image"),
