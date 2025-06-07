@@ -3,6 +3,7 @@ const asyncHandler = require("express-async-handler");
 const Apology = require("../models/apologiesSchema");
 const Student = require("../models/studentInfoSchema");
 const Notification = require("../models/notificationSchema");
+const factory = require("./handlerFactory");
 
 const createApology = asyncHandler(async (req, res, next) => {
   // console.log("REQ FILE:", req.file);
@@ -48,23 +49,21 @@ const reviewApology = asyncHandler(async (req, res) => {
   apology.seenAt = new Date();
   await apology.save();
 
-  const notification = await Notification.create({
-    user: apology.student._id,
-    message: `Your apology was ${
-      status === "accepted" ? "accepted" : "rejected"
-    } by staff.`,
-    relatedApology: apology._id,
-    type: "apology_response",
-    seen: false,
-  });
+  // const notification = await Notification.create({
+  //   user: apology.student._id,
+  //   message: `Your apology was ${
+  //     status === "accepted" ? "accepted" : "rejected"
+  //   } by staff.`,
+  //   relatedApology: apology._id,
+  //   type: "apology_response",
+  //   seen: false,
+  // });
 
   res.status(200).json({
     message: "Apology updated and notification sent.",
     apology,
-    notification,
+    // notification,
   });
-
-  res.status(200).json({ status: "success", data: apology });
 });
 
 const getAcceptedApologies = asyncHandler(async (req, res) => {
@@ -80,8 +79,32 @@ const getAcceptedApologies = asyncHandler(async (req, res) => {
     .json({ status: "success", resutl: apologies.length, data: apologies });
 });
 
+const getAllApologies = factory.getAllDocuments(Apology);
+
+const getOneApology = factory.getOneDocument(Apology);
+
+const deleteApology = factory.deleteDocument(Apology);
+
+const getLoggedStudentApologies = asyncHandler(async (req, res) => {
+  const apologies = await Apology.find({
+    student: req.student._id,
+  })
+    .select("course status image description seenByStaff createdAt updatedAt")
+    .populate("course", "courseName");
+
+  if (!apologies) {
+    return res.status(404).json("There are no apologies for you");
+  }
+
+  res.status(200).json({ result: apologies.length, data: apologies });
+});
+
 module.exports = {
   createApology,
   reviewApology,
   getAcceptedApologies,
+  getAllApologies,
+  getOneApology,
+  deleteApology,
+  getLoggedStudentApologies,
 };

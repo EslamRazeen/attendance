@@ -40,4 +40,9 @@ const apologiesSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+apologiesSchema.pre(/^find/, function (next) {
+  this.populate("course", "courseName");
+  next();
+});
+
 module.exports = mongoose.model("Apology", apologiesSchema);
