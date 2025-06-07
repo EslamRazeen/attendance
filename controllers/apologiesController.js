@@ -89,7 +89,9 @@ const getLoggedStudentApologies = asyncHandler(async (req, res) => {
   const apologies = await Apology.find({
     student: req.student._id,
   })
-    .select("course status image description seenByStaff createdAt updatedAt")
+    .select(
+      "course status image description seenByStaff reason createdAt updatedAt seenAt"
+    )
     .populate("course", "courseName");
 
   if (!apologies) {
