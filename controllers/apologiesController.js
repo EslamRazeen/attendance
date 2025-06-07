@@ -7,19 +7,23 @@ const Notification = require("../models/notificationSchema");
 const createApology = asyncHandler(async (req, res, next) => {
   const { course, description, image } = req.body;
 
-  const studentCourse = await Student.find({
-    courses: { $in: course },
+  const studentCourse = await Student.findOne({
+    courses: course,
     _id: req.student._id,
   });
+
   if (!studentCourse) {
-    res.status(401).json(`this course: ${course} not found for this student`);
+    return res
+      .status(401)
+      .json(`This course: ${course} not found for this student`);
   }
+  // console.log(studentCourse);
 
   const apology = await Apology.create({
     student: req.student._id,
     course,
     description,
-    image: req.file ? req.file.path : null,
+    image: req.file?.path || null,
   });
 
   res.status(201).json({ status: "success", data: apology });
