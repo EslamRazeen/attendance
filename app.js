@@ -36,7 +36,9 @@ const allowedOrigins = [
   "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app",
   "https://attendance-front-main.vercel.app",
   "https://attendance-front-main-igbnpgfq3-eslam-razeens-projects.vercel.app",
-  "https://attendance-main-main-dzsmi736x-abdelrahman-ali-arafa1s-projects.vercel.app",
+  // "https://attendance-main-main-dzsmi736x-abdelrahman-ali-arafa1s-projects.vercel.app",
+  "https://graduate-project-swart.vercel.app",
+  "https://graduate-project-git-main-abdelrahman-ali-arafa1s-projects.vercel.app",
 ];
 
 app.use(
