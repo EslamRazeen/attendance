@@ -41,7 +41,8 @@ const apologiesSchema = new mongoose.Schema(
 );
 
 apologiesSchema.pre(/^find/, function (next) {
-  this.populate("course", "courseName");
+  this.populate("course", "courseName"), this.populate("student", "name");
+
   next();
 });
 
