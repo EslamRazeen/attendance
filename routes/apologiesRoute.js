@@ -44,5 +44,11 @@ router.get(
   authController.allowedTo("lecturer", "staff"),
   apologyController.getOneApology
 );
+router.delete(
+  "/:id",
+  authController.protect,
+  authController.allowedTo("lecturer", "staff"),
+  apologyController.deleteApology
+);
 
 module.exports = router;

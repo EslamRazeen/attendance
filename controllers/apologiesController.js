@@ -71,7 +71,7 @@ const getAcceptedApologies = asyncHandler(async (req, res) => {
     // status: "accepted",
     course: { $in: req.user.lecturerCourses },
   })
-    .populate("student", "name")
+    .populate("student", "name department level")
     .populate("course", "courseName");
 
   res
