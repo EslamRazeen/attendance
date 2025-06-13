@@ -10,7 +10,6 @@ const validatorOfAttendance = require("../utils/validators/attendanceValidator")
 
 router.post(
   "/",
-
   userAndStuentProtect.userAndStuentProtect,
   validatorOfAttendance.createAttendanceValidator,
   attendanceController.createAttendance
@@ -34,6 +33,12 @@ router.delete(
   authController.allowedTo("staff", "lecturer"),
   validatorOfAttendance.deleteAttendanceValidator,
   attendanceController.deleteAttendance
+);
+router.post(
+  "/fingerprintAttendance",
+  userAndStuentProtect.userAndStuentProtect,
+  // validatorOfAttendance.createAttendanceValidator,
+  attendanceController.fingerprintAttendance
 );
 
 module.exports = router;

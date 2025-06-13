@@ -38,6 +38,13 @@ const studentSchema = new mongoose.Schema(
       type: String,
       default: "student",
     },
+    fingerprint: {
+      type: Number,
+      unique: true,
+    },
+    fingerprintTemplate: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

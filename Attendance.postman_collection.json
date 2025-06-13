@@ -552,7 +552,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    // \"name\": \"AbdElrahman Ali\"\r\n    \"email\": \"eee2@gmail.com\"\r\n}",
+							"raw": "{\r\n    // \"name\": \"AbdElrahman Ali\"\r\n    \"level\": \"4\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -560,7 +560,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/683f5874e19ac242ac35ab0c",
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/6840d9cbc214821f424d6314",
 							"host": [
 								"{{URL}}"
 							],
@@ -568,7 +568,7 @@
 								"api",
 								"attendanceQRCode",
 								"studentInfo",
-								"683f5874e19ac242ac35ab0c"
+								"6840d9cbc214821f424d6314"
 							]
 						}
 					},
@@ -677,9 +677,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/addCourse",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/studentInfo/addCourse",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -716,9 +719,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/removeCourse/67b8f88250147de33624ea50",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/studentInfo/removeCourse/67b8f88250147de33624ea50",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -847,7 +853,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"ddd1@gmail.com\",\r\n    // \"username\": \"na1@ee.com\",\r\n    \"password\": \"pass11\"\r\n}",
+							"raw": "{\r\n    \"username\": \"mohamed13@example.com\",\r\n    \"password\": \"pass22\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -855,9 +861,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/auth/student/login",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/auth/student/login",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -1355,9 +1364,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/sessionsCourse/67b8f80a50147de33624ea46",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/sessionsCourse/67b8f80a50147de33624ea46",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -1740,9 +1752,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/showStudent/67b8f80a50147de33624ea46",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/showStudent/67b8f80a50147de33624ea46",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -1904,7 +1919,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/manualAttendace/682a57026bbab0dba3c1f9ed",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/manualAttendace/67b8f80a50147de33624ea46",
 							"protocol": "https",
 							"host": [
 								"attendance-eslamrazeen-eslam-razeens-projects",
@@ -1915,7 +1930,7 @@
 								"api",
 								"attendanceQRCode",
 								"manualAttendace",
-								"682a57026bbab0dba3c1f9ed"
+								"67b8f80a50147de33624ea46"
 							]
 						}
 					},
@@ -2032,12 +2047,12 @@
 							"formdata": [
 								{
 									"key": "course",
-									"value": "67b8f87450147de33624ea4d",
+									"value": "67b8f93350147de33624ea57",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "I was a patient",
+									"value": "I was a sick",
 									"type": "text"
 								},
 								{
@@ -2048,9 +2063,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/apology",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/apology",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
@@ -2078,7 +2096,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"status\": \"rejected\",\r\n    \"reason\": \"You apology is rejected\"\r\n}",
+							"raw": "{\r\n    \"status\": \"accepted\",\r\n    \"reason\": \"You apology is Accepteddd والدنيا حلوة\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2086,15 +2104,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/apology/682e43524151769bb2230b01",
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/apology/68450a58609f3d4bd1bc121f",
+							"protocol": "https",
 							"host": [
-								"{{URL}}"
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
 							],
 							"path": [
 								"api",
 								"attendanceQRCode",
 								"apology",
-								"682e43524151769bb2230b01"
+								"68450a58609f3d4bd1bc121f"
 							]
 						}
 					},
@@ -2116,6 +2137,46 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+							"raw": "https://attendance-eslamrazeen-eslam-razeens-projects.vercel.app/api/attendanceQRCode/apology/instructor",
+							"protocol": "https",
+							"host": [
+								"attendance-eslamrazeen-eslam-razeens-projects",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"apology",
+								"instructor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all apologies",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
 							"raw": "{{URL}}/api/attendanceQRCode/apology",
 							"host": [
 								"{{URL}}"
@@ -2124,6 +2185,100 @@
 								"api",
 								"attendanceQRCode",
 								"apology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getOneApology",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/apology/68443b1ff149a8a94511c53f",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"apology",
+								"68443b1ff149a8a94511c53f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get LoggedStudent apology",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{VERCEL}}/api/attendanceQRCode/apology/loggedStudentApologies",
+							"host": [
+								"{{VERCEL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"apology",
+								"loggedStudentApologies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete apology",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/apology/684457897c6092e6c77667b2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"apology",
+								"684457897c6092e6c77667b2"
 							]
 						}
 					},

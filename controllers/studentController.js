@@ -167,6 +167,23 @@ const updateLoggedStudentPassword = asyncHandler(async (req, res, next) => {
     .json({ message: "User password updated successfully", data: user });
 });
 
+const fingerprintRegister = asyncHandler(async (req, res, next) => {
+  const { studentId, fingerprintId } = req.body;
+  const student = await studentInfoSchema.findByIdAndUpdate(
+    studentId,
+    { fingerprint: fingerprintId },
+    { new: true }
+  );
+
+  if (!student) {
+    return res.status(404).json("Student not found");
+  }
+
+  res
+    .status(201)
+    .json({ message: "Fingerprint registed successfully", data: student });
+});
+
 module.exports = {
   createStudent,
   getAllStudents,
@@ -177,4 +194,5 @@ module.exports = {
   updateLoggedStudentPassword,
   addCourseToStudent,
   removeCourseFromStudent,
+  fingerprintRegister,
 };

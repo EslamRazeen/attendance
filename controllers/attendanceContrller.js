@@ -28,6 +28,37 @@ const createAttendance = asyncHandler(async (req, res) => {
   res.json({ message: "Attendance marked successfully!", studentAttendance });
 });
 
+const fingerprintAttendance = asyncHandler(async (req, res) => {
+  const { fingerprintStudentId, sessionID } = req.body;
+  const sessionExists = await Session.findById(sessionID);
+  if (!sessionExists)
+    return res.status(404).json({ message: "Session not found" });
+
+  const timeWorking = sessionExists.QRcodeTimeWorking * 60 * 1000;
+  const sesstionCreateAt = new Date(sessionExists.createdAt).getTime();
+  const now = Date.now();
+  if (now - sesstionCreateAt > timeWorking) {
+    return res.status(400).json("Session expired");
+  }
+
+  const studentExists = await Student.findOne({
+    fingerprint: fingerprintStudentId,
+    courses: { $in: [sessionExists.course] },
+  });
+  if (!studentExists)
+    return res.status(404).json({ message: "Student not found" });
+
+  const attendance = await Attendance.findOneAndUpdate(
+    { sessionID, student: studentExists._id },
+    { attendanceStatus: "present", scanDate: new Date() },
+    { upsert: true, new: true }
+  );
+  res.json({
+    message: "Fingerpring Attendance marked successfully!",
+    attendance,
+  });
+});
+
 const getAllAttendances = factory.getAllDocuments(Attendance);
 
 const getOneAttendance = factory.getOneDocument(Attendance);
@@ -42,4 +73,5 @@ module.exports = {
   getOneAttendance,
   updateAttendance,
   deleteAttendance,
+  fingerprintAttendance,
 };
