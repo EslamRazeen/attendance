@@ -139,10 +139,10 @@ const getPendingFingerprintVerify = asyncHandler(async (req, res, next) => {
 });
 
 const fingerprintConfirmVerify = asyncHandler(async (req, res, next) => {
-  const { fingerprintId, fingerprintVerificatioId } = req.body;
+  const { fingerprintId, fingerprintVerificationId } = req.body;
 
   const fingerprintFirsDocument = await Fingerprint.findById(
-    fingerprintVerificatioId
+    fingerprintVerificationId
   );
   if (!fingerprintFirsDocument) {
     return res.status(404).json("There is no fingerprint document for this id");
@@ -186,7 +186,7 @@ const fingerprintConfirmVerify = asyncHandler(async (req, res, next) => {
   let fingerprint;
   if (now - sesstionCreateAt > timeWorking) {
     fingerprint = await Fingerprint.findOneAndUpdate(
-      { _id: fingerprintVerificatioId, type: "verify", status: "pending" },
+      { _id: fingerprintVerificationId, type: "verify", status: "pending" },
       { status: "done", studentId: student._id },
       { new: true }
     );
