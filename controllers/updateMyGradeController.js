@@ -14,15 +14,12 @@ const updateMyGrade = asyncHandler(async (req, res, next) => {
   if (!students) {
     return res.status(404).json("Not students for this IDs or for this level");
   }
-  // for (const student of students){
-  //     const coursesOfStudents = await courseSchema.find(
-  //         {level: level+1 < 5 ? level+1: level, department: student.department}
-  //     )
 
-  //     student.level = level+1 < 5 ? level+1: level
-  //     student.courses = coursesOfStudents.map(course => course._id)
-  //     await student.save()
-  // }
+  if (numLevel === 4) {
+    await studentSchema.deleteMany({
+      _id: { $in: studentIds },
+    });
+  }
 
   await Promise.all(
     students.map(async (student) => {
