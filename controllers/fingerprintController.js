@@ -111,11 +111,30 @@ const getPendingFingerprintVerify = asyncHandler(async (req, res, next) => {
     .sort({
       createdAt: -1,
     })
-    .select("type status");
+    .select("type status sessionId");
 
-  if (!fingerprint) {
-    return res.status(404).json("No pending verify request");
+  if (!fingerprint) return res.status(404).json("No pending verify request");
+
+  const session = await Session.findById(fingerprint.sessionId);
+  if (!session) {
+    return res.status(404).json("session not found");
   }
+
+  const timeWorking = session.QRcodeTimeWorking * 60 * 1000;
+  const sesstionCreateAt = new Date(session.createdAt).getTime();
+  const now = Date.now();
+
+  if (now - sesstionCreateAt > timeWorking) {
+    await Fingerprint.findOneAndUpdate(
+      { _id: fingerprint._id, type: "verify", status: "pending" },
+      { status: "done" },
+      { new: true }
+    );
+    return res
+      .status(404)
+      .json("No pending verification found, Session expired");
+  }
+
   res.status(200).json({ data: fingerprint });
 });
 
@@ -133,7 +152,12 @@ const fingerprintConfirmVerify = asyncHandler(async (req, res, next) => {
     fingerprint: fingerprintId,
   });
 
-  if (!student) {
+  const studentfingerprint = await Fingerprint.findOne({
+    studentId: student._id,
+    fingerprintId,
+  });
+
+  if (!studentfingerprint) {
     return res
       .status(400)
       .json(
