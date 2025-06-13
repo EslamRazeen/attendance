@@ -66,10 +66,5 @@ router.delete(
   authController.protect,
   studentController.removeCourseFromStudent
 );
-router.post(
-  "/fingerprintRegister",
-  authController.protect,
-  studentController.fingerprintRegister
-);
 
 module.exports = router;

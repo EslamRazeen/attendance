@@ -736,6 +736,45 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Fingerprint register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"studentId\": \"683f730ad2b640274ec8999e\",\r\n    \"fingerprintId\": 133333\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/studentInfo/fingerprintRegister",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"studentInfo",
+								"fingerprintRegister"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -803,7 +842,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"bassem@gmail.com\",\r\n    \"password\": \"pass11\"\r\n\r\n}",
+							"raw": "{\r\n    \"username\": \"sami@gmail.com\",\r\n    \"password\": \"pass11\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1461,7 +1500,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"student\": \"67b8ff29b4dd631faf251370\",\r\n    \"sessionID\": \"6818e798fd9cd3d77d72042b\",\r\n    \"attendanceStatus\": \"present\"\r\n}",
+							"raw": "{\r\n    \"student\": \"67b8ff29b4dd631faf251370\",\r\n    \"sessionID\": \"6818e798fd9cd3d77d72042b\",\r\n    \"attendanceStatus\": \"present\" // fingerPrint: 13 , 14, 15, 16, \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1606,6 +1645,45 @@
 								"attendanceQRCode",
 								"attendances",
 								"680266bd1a790e3021588545"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create fingerprint attendance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{JWT}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fingerprintStudentId\": 133333,\r\n    \"sessionID\": \"684b456754a5037dfcb5cc94\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/attendanceQRCode/attendances/fingerprintAttendance",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"attendanceQRCode",
+								"attendances",
+								"fingerprintAttendance"
 							]
 						}
 					},

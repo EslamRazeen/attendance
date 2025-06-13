@@ -34,11 +34,5 @@ router.delete(
   validatorOfAttendance.deleteAttendanceValidator,
   attendanceController.deleteAttendance
 );
-router.post(
-  "/fingerprintAttendance",
-  userAndStuentProtect.userAndStuentProtect,
-  // validatorOfAttendance.createAttendanceValidator,
-  attendanceController.fingerprintAttendance
-);
 
 module.exports = router;

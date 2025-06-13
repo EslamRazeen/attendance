@@ -25,6 +25,7 @@ const dashboardAdmin = require("./routes/dashboardAdminRoute");
 const apology = require("./routes/apologiesRoute");
 const updateMyGrade = require("./routes/updateMyGradeRoute");
 const sessionsCourse = require("./routes/getAllsessionsCourseRoute");
+const fingerprint = require("./routes/fingerprintRoute");
 
 const database = require("./config/database");
 
@@ -81,6 +82,7 @@ app.use("/api/attendanceQRCode/dashboardAdmin", dashboardAdmin);
 app.use("/api/attendanceQRCode/apology", apology);
 app.use("/api/attendanceQRCode/updateMyGrade", updateMyGrade);
 app.use("/api/attendanceQRCode/sessionsCourse", sessionsCourse);
+app.use("/api/attendanceQRCode/fingerprint", fingerprint);
 
 app.all("*", (req, res, next) => {
   // Create Error and send it to the next middleware (Error Handling Middleware)
