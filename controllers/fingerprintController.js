@@ -102,7 +102,6 @@ const fingerprintVerify = asyncHandler(async (req, res) => {
   res.status(201).json({ message: "Waiting for check", data: fingerprint });
 });
 
-// مش هستخدمه
 const getPendingFingerprintVerify = asyncHandler(async (req, res, next) => {
   const fingerprint = await Fingerprint.findOne({
     status: "pending",
@@ -183,9 +182,8 @@ const fingerprintConfirmVerify = asyncHandler(async (req, res, next) => {
   const sesstionCreateAt = new Date(session.createdAt).getTime();
   const now = Date.now();
 
-  let fingerprint;
   if (now - sesstionCreateAt > timeWorking) {
-    fingerprint = await Fingerprint.findOneAndUpdate(
+    await Fingerprint.findOneAndUpdate(
       { _id: fingerprintVerificationId, type: "verify", status: "pending" },
       { status: "done", studentId: student._id },
       { new: true }
@@ -209,6 +207,26 @@ const fingerprintConfirmVerify = asyncHandler(async (req, res, next) => {
 
 const getAllFingerprints = factory.getAllDocuments(Fingerprint);
 
+const getAllEnrollFingerprints = asyncHandler(async (req, res, next) => {
+  const enrollFingerprint = await Fingerprint.find({ type: "enroll" }).sort({
+    createdAt: -1,
+  });
+
+  res
+    .status(200)
+    .json({ result: enrollFingerprint.length, data: enrollFingerprint });
+});
+
+const getAllVerifyFingerprints = asyncHandler(async (req, res, next) => {
+  const enrollFingerprint = await Fingerprint.find({ type: "verify" }).sort({
+    createdAt: -1,
+  });
+
+  res
+    .status(200)
+    .json({ result: enrollFingerprint.length, data: enrollFingerprint });
+});
+
 const deleteFingerprint = factory.deleteDocument(Fingerprint);
 
 const getOneFingerprint = factory.getOneDocument(Fingerprint);
@@ -230,4 +248,6 @@ module.exports = {
   deleteFingerprint,
   getOneFingerprint,
   deleteAllFingerprints,
+  getAllEnrollFingerprints,
+  getAllVerifyFingerprints,
 };

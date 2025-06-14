@@ -22,6 +22,11 @@ router.post(
   authController.protect,
   fingerprintController.fingerprintConfirmRegister
 );
+router.get(
+  "/enroll/getAllEnrollFingerprints",
+  authController.protect,
+  fingerprintController.getAllEnrollFingerprints
+);
 
 // Verification Routes
 router.post(
@@ -29,12 +34,6 @@ router.post(
   userAndStuentProtect.userAndStuentProtect,
   fingerprintController.fingerprintVerify
 );
-router.get(
-  "/getAllFingerprints",
-  userAndStuentProtect.userAndStuentProtect,
-  fingerprintController.getAllFingerprints
-);
-
 router.get(
   "/verify/getPendingFingerprintVerify",
   userAndStuentProtect.userAndStuentProtect,
@@ -44,6 +43,18 @@ router.post(
   "/verify/fingerprintConfirmVerify",
   userAndStuentProtect.userAndStuentProtect,
   fingerprintController.fingerprintConfirmVerify
+);
+router.get(
+  "/verify/getAllVerifyFingerprints",
+  userAndStuentProtect.userAndStuentProtect,
+  fingerprintController.getAllVerifyFingerprints
+);
+
+// Options
+router.get(
+  "/getAllFingerprints",
+  userAndStuentProtect.userAndStuentProtect,
+  fingerprintController.getAllFingerprints
 );
 
 router.get(

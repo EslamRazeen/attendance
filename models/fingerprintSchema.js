@@ -29,9 +29,9 @@ const fingerprintSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// fingerprintSchema.pre(/^find/, function (next) {
-//   this.populate("studentId", "name");
-//   next();
-// });
+fingerprintSchema.pre(/^find/, function (next) {
+  this.populate("studentId", "name");
+  next();
+});
 
 module.exports = mongoose.model("Fingerprint", fingerprintSchema);
