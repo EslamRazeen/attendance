@@ -1,7 +1,6 @@
 const asyncHandler = require("express-async-handler");
 
 const Attendance = require("../models/attendancesSchema");
-const Session = require("../models/sessionsSchema");
 const User = require("../models/usersSchema");
 const Student = require("../models/studentInfoSchema");
 
@@ -19,7 +18,6 @@ const showStudent = asyncHandler(async (req, res, next) => {
   // });
 
   const userCourses = await User.findById(req.user._id);
-  console.log(userCourses);
 
   const lecturerCourseIds = userCourses.lecturerCourses.map((course) =>
     course._id.toString()
@@ -34,19 +32,22 @@ const showStudent = asyncHandler(async (req, res, next) => {
   const students = await Student.find({
     courses: { $in: [courseID] },
   });
+  if (!students) {
+    return res.status(404).json("Students not found");
+  }
 
   const attendances = await Attendance.find({
     courseId: courseID,
     sessionType:
       req.user.lecturerRole === "instructour" ? "lecture" : "section",
-  });
-  // console.log(attendances);
+  }).populate("student");
 
   let studentAttendanc = 0;
   let arr = [];
   students.forEach((student) => {
     studentAttendanc = attendances.filter(
       (attendanc) =>
+        attendanc.student &&
         attendanc.student._id.toString() === student._id.toString() &&
         attendanc.attendanceStatus === "present"
     ).length;

@@ -2457,6 +2457,44 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get enrollment fingerprints",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{URL}}/api/attendanceQRCode/fingerprint/enroll/getAllEnrollFingerprints",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"attendanceQRCode",
+										"fingerprint",
+										"enroll",
+										"getAllEnrollFingerprints"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -2480,7 +2518,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"sessionID\": \"684c48e2508984de8362531d\"\r\n}",
+									"raw": "{\r\n    \"sessionID\": \"684c6ccbc5e86d63e717bda6\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2488,9 +2526,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{URL}}/api/attendanceQRCode/fingerprint/verify/fingerprintFirstVerify",
+									"raw": "{{VERCEL}}/api/attendanceQRCode/fingerprint/verify/fingerprintFirstVerify",
 									"host": [
-										"{{URL}}"
+										"{{VERCEL}}"
 									],
 									"path": [
 										"api",
@@ -2563,7 +2601,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"fingerprintId\": 8,\r\n    \"fingerprintVerificatioId\": \"684c48f1b9db7cd88c358fb6\"\r\n}",
+									"raw": "{\r\n    \"fingerprintId\": 15,\r\n    \"fingerprintVerificationId\": \"684c6884dfac0b57bbaf7f68\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2581,6 +2619,37 @@
 										"fingerprint",
 										"verify",
 										"fingerprintConfirmVerify"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get verification fingerprints",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{JWT}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/api/attendanceQRCode/fingerprint/verify/getAllVerifyFingerprints",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"attendanceQRCode",
+										"fingerprint",
+										"verify",
+										"getAllVerifyFingerprints"
 									]
 								}
 							},
@@ -2616,9 +2685,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/fingerprint/getAllFingerprints",
+							"raw": "{{VERCEL}}/api/attendanceQRCode/fingerprint/getAllFingerprints",
 							"host": [
-								"{{URL}}"
+								"{{VERCEL}}"
 							],
 							"path": [
 								"api",
@@ -2646,15 +2715,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/attendanceQRCode/fingerprint/684c481cf98be61c9a2f677f",
+							"raw": "{{VERCEL}}/api/attendanceQRCode/fingerprint/684c6262f1634130ba13778d",
 							"host": [
-								"{{URL}}"
+								"{{VERCEL}}"
 							],
 							"path": [
 								"api",
 								"attendanceQRCode",
 								"fingerprint",
-								"684c481cf98be61c9a2f677f"
+								"684c6262f1634130ba13778d"
 							]
 						}
 					},
